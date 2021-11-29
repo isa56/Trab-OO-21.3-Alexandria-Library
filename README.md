@@ -2,7 +2,7 @@
 
 ## Descrição:
 Sistema de Biblioteca para o curso de Orientação a Objetos (DCC025) no período 2021.3 da UFJF.
-* Linguagem: <img alt="Java" src="https://www.ativasoft.com.br/blog/wp-content/uploads/2018/01/java_icon.png" width="20"></img>
+* Linguagem: <img alt="Java" src="https://www.ativasoft.com.br/blog/wp-content/uploads/2018/01/java_icon.png" width="40"></img>
 
 ## Integrantes do Grupo:
 * [Gabriel Frasson - ]();
