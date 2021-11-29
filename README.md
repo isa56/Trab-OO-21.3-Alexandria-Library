@@ -5,7 +5,7 @@ Sistema de Biblioteca para o curso de Orientação a Objetos (DCC025) no períod
 * Linguagem: <img alt="Java" src="https://www.ativasoft.com.br/blog/wp-content/uploads/2018/01/java_icon.png" width="40"></img>
 
 ## Integrantes do Grupo:
-* [Gabriel Frasson - ]();
+* [Gabriel Frasson - 202035001](https://github.com/GFrasson);
 * [Isadora Gonçalves Ferreira - 202035017]();
 * [Nélio Gouvea - ]();
 
