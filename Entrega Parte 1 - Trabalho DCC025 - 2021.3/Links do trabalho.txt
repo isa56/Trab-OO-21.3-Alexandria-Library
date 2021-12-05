@@ -1,0 +1,18 @@
+Os integrantes do grupo são:
+
+Gabriel Frasson Costa - 202035001;
+Isadora Gonçalves Ferreira - 202035017;
+Nélio Alves Gouvêa Neto - 201935037;
+
+Links pertinentes:
+
+Repositório do GitHub - https://github.com/isa56/Trab-OO-21.3-Alexandria-Library
+
+Vídeo de apresentação - https://youtu.be/xlqUIzIDYfM
+
+Documentação - https://docs.google.com/document/d/12Ocq4AJZg6iqNCZt6IzPJvsMbWFAbf9499eRfbHI5hw/edit?usp=sharing
+
+Apresentação de Slides - https://tinyurl.com/apresentacaoOO
+
+Diagrama UML - https://whimsical.com/library-QDHPYk5Heu1yxXjxdszpeS
+
