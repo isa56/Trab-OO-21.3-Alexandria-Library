@@ -1,5 +1,22 @@
 package br.oo.alexandria.library;
 
-public class BookExemplary {
+import java.util.*;
+
+public class BookExemplary extends Book {
+
+    private int id;
     
+    
+    /*public Date lentFromDate(Date date, LibraryUser user) {
+        
+    }*/
+    
+    public void returnBook() {
+        isAvailable = true;
+    }
+
+    public void lendBook() {
+
+    }
+
 }
