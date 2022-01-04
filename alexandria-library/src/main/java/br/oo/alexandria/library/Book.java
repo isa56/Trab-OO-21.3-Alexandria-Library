@@ -16,6 +16,11 @@ public class Book {
         
     }
     
+    public void lendBook(LibraryUser user) {
+        addReader(user);
+        // Cria o loan
+    }
+    
     // Getters and Setters:
     public String getBookName() {
         return bookName;

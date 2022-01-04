@@ -13,11 +13,45 @@ public abstract class Library {
     }
 
     public static Book findBookByName(String bookName) {
+        /*
+        Book b = new Book();
         
+        // Isso está errado!!! O que tá acontecendo????
+        bookList.forEach(book -> {
+            if(book.getBookName() == bookName) {
+                b = book;
+                break;
+            }
+        });
+        
+        if(b != null) {
+            return b;
+        }
+        
+        System.out.println("O livro não foi encontrado!");
+        return null;
+         */
     }
 
     public static Book findBookByAuthor(String bookAuthor) {
+        /*
+        Book b = new Book();
         
+        // Isso está errado!!! O que tá acontecendo????
+        bookList.forEach(book -> {
+            if(book.getAuthorName() == bookAuthor) {
+                b = book;
+                break;
+            }
+        });
+        
+        if(b != null) {
+            return b;
+        }
+        
+        System.out.println("O livro não foi encontrado!");
+        return null;
+         */
     }
 
     public boolean isBookAvailable(String bookName) {

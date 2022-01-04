@@ -6,10 +6,17 @@ public class Employee extends User {
 
     private String loginPassword;
 
-    public void lendBook(Book book, LibraryUser user) {
-        book.addReader(user);
+    public Employee(String loginPassword, String name, String phone, String email) {
+        super(name, phone, email);
+        this.loginPassword = loginPassword;
     }
 
+    public void lendBook(Book book, LibraryUser user) {
+        book.lendBook(user);
+        
+    }
+
+    // Por enquanto printa
     public void findBookLenders(String bookName) {
         Book book = Library.findBookByName(bookName);
         List<LibraryUser> readerList = book.getReaderList();
@@ -29,13 +36,10 @@ public class Employee extends User {
         b.setBookGenre(genre);
 
         Library.addBook(b);
-
     }
 
     public void removeBook(Book book) {
-        
-        
-        
+        Library.removeBook(book);
     }
 
     public void setLoginPassword(String loginPassword) {

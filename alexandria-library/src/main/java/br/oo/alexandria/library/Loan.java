@@ -8,5 +8,5 @@ public class Loan {
     private int idExemplary;
     private Date lentDate;
     private Date devolutionDate;
-        
+
 }

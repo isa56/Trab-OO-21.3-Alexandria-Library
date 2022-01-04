@@ -8,8 +8,6 @@ public class User {
     protected String phone;
     protected String email;
     
-    User(){}
-    
     User(String name, String phone, String email) {
         this.name = name;
         this.phone = phone;
