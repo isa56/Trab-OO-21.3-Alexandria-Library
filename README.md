@@ -13,9 +13,10 @@ Sistema de Biblioteca para o curso de Orientação a Objetos (DCC025) no períod
 * [Enunciado](https://drive.google.com/file/d/1tSs02AVMjhpnLdY8hz3z4NkEfP1iElu5/view?usp=sharing);
 * [GitHub](https://github.com/isa56/Trab-OO-21.3-Alexandria-Library);
 * [Diagrama UML](https://whimsical.com/library-QDHPYk5Heu1yxXjxdszpeS);
-* [Documentação](https://docs.google.com/document/d/12Ocq4AJZg6iqNCZt6IzPJvsMbWFAbf9499eRfbHI5hw/edit?usp=sharing);
+* [Documentação](https://docs.google.com/document/d/12vQCwFmxIfWlj0aecTC6e5dEiQZnVNvYpGeK84B6ZIg/edit?usp=sharing);
 * [Slide](https://www.canva.com/design/DAExTqRL9TM/W0bkBqGoevsf_PAh8CJ00Q/view?utm_content=DAExTqRL9TM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton);
-* [Vídeo](https://youtu.be/xlqUIzIDYfM).
+* [Vídeo](https://youtu.be/xlqUIzIDYfM);
+* [Mockup da Interface do Usuário](https://www.figma.com/file/vMCnSn9rKDv7W9a2k9zrpG/Alexandria?node-id=0%3A1).
 
 ## Requisitos de Sistema:
 1. Sistema de Login:
