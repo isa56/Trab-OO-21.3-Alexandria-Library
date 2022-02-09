@@ -5,8 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import br.oo.alexandria.library.util.Constants;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
 
@@ -18,8 +16,8 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
     public LoginScreen() {
         super(Constants.LOGIN_LABEL);
         
-        this.emailField = new JTextField();
-        this.passwordField = new JTextField();
+        this.emailField = new JTextField(Constants.FIELD_SIZE);
+        this.passwordField = new JTextField(Constants.FIELD_SIZE);
         this.loginButton = new JButton(Constants.LOGIN_LABEL);
         this.signupButton = new JButton(Constants.SIGNUP_LABEL);
 

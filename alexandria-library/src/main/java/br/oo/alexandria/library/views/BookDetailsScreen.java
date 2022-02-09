@@ -1,15 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.oo.alexandria.library.views;
 
-/**
- *
- * @author isadora
- */
-public class BookDetailsScreen {
+import br.oo.alexandria.library.util.Constants;
+
+public class BookDetailsScreen extends Screen {
+
+    public BookDetailsScreen() {
+        super(Constants.BOOK_LABEL);
+    
+        
+        
+        
+    }
 
 }
