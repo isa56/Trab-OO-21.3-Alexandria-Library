@@ -3,7 +3,6 @@ package br.oo.alexandria.library.views;
 import br.oo.alexandria.library.controllers.UserCreate;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import javax.swing.*;
 
 public class SignupScreen extends Screen {
@@ -18,7 +17,7 @@ public class SignupScreen extends Screen {
     public SignupScreen() {
 
         super(Constants.SIGNUP_LABEL);
-        
+
         this.nameField = new JTextField();
         this.emailField = new JTextField();
         this.phoneField = new JTextField();
@@ -54,8 +53,12 @@ public class SignupScreen extends Screen {
 
         this.signupButton.addActionListener(new UserCreate(this));
         getMainPanel().add(signupButton);
-        
-        packScreen();
+
+        getFrame().add(getMainPanel());
+
+        getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getFrame().repaint();
+
     }
 
     public JTextField getNameField() {
@@ -97,7 +100,5 @@ public class SignupScreen extends Screen {
     public void setSignupButton(JButton signupButton) {
         this.signupButton = signupButton;
     }
-    
-    
 
 }

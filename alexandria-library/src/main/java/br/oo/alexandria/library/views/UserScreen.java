@@ -13,7 +13,7 @@ public class UserScreen extends Screen {
     private JButton myLoansButton;
 
     public UserScreen() {
-        
+
         super(Constants.SCREEN_USER);
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
@@ -29,18 +29,21 @@ public class UserScreen extends Screen {
         getFrame().setVisible(true);
 
         getMainPanel().setLayout(new BorderLayout());
-        
+
         this.booksButton.addActionListener(new BooksListing(this));
         getMainPanel().add(booksButton);
 
         this.myLoansButton.addActionListener(new LoansListing(this));
         getMainPanel().add(myLoansButton);
-                
+
+        getFrame().add(getMainPanel());
+
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
-        
+
     }
-/*
+
+    /*
     public JButton getGoBackButton() {
         return goBackButton;
     }
@@ -48,7 +51,7 @@ public class UserScreen extends Screen {
     public void setGoBackButton(JButton goBackButton) {
         this.goBackButton = goBackButton;
     }
-*/
+     */
     public JButton getBooksButton() {
         return booksButton;
     }

@@ -10,14 +10,13 @@ import javax.swing.JFrame;
 
 public class EmployeeScreen extends Screen {
 
-    
 //  private JButton goBackButton;
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
 
     public EmployeeScreen() {
-        
+
         super(Constants.SCREEN_USER);
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
@@ -34,7 +33,7 @@ public class EmployeeScreen extends Screen {
         getFrame().setVisible(true);
 
         getMainPanel().setLayout(new BorderLayout());
-        
+
         this.booksButton.addActionListener(new BooksListing(this));
         getMainPanel().add(booksButton);
 
@@ -43,12 +42,15 @@ public class EmployeeScreen extends Screen {
 
         this.addBookButton.addActionListener(new AddBook(this));
         getMainPanel().add(addBookButton);
-        
+
+        getFrame().add(getMainPanel());
+
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
-        
+
     }
-/*
+
+    /*
     public JButton getGoBackButton() {
         return goBackButton;
     }
@@ -56,7 +58,7 @@ public class EmployeeScreen extends Screen {
     public void setGoBackButton(JButton goBackButton) {
         this.goBackButton = goBackButton;
     }
-*/
+     */
     public JButton getBooksButton() {
         return booksButton;
     }
@@ -73,5 +75,4 @@ public class EmployeeScreen extends Screen {
         this.loansButton = myLoans;
     }
 
-    
 }
