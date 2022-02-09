@@ -1,5 +1,6 @@
 package br.oo.alexandria.library;
 
+import br.oo.alexandria.library.models.Book;
 import java.util.*;
 
 public abstract class Library {
@@ -16,7 +17,8 @@ public abstract class Library {
         /*
         Book b = new Book();
         
-        // Isso está errado!!! O que tá acontecendo????
+        // Isso está errado!!! O que tá acontecendo???? -> Usar o equals
+        // Tirar a arrow function
         bookList.forEach(book -> {
             if(book.getBookName() == bookName) {
                 b = book;
@@ -37,7 +39,7 @@ public abstract class Library {
         /*
         Book b = new Book();
         
-        // Isso está errado!!! O que tá acontecendo????
+        // Isso está errado!!! O que tá acontecendo???? -> Usar o equals
         bookList.forEach(book -> {
             if(book.getAuthorName() == bookAuthor) {
                 b = book;

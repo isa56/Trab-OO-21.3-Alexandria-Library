@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Loan {
     
+    // mudar para letras minúsculas
     private final int ID_USER;
     private final int ID_EXEMPLARY;
     private final Date LENT_DATE;

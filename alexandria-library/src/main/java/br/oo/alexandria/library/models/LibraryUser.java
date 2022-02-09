@@ -1,4 +1,6 @@
-package br.oo.alexandria.library;
+package br.oo.alexandria.library.models;
+
+import br.oo.alexandria.library.models.User;
 
 public class LibraryUser extends User {
 

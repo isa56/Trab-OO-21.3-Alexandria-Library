@@ -1,5 +1,6 @@
-package br.oo.alexandria.library;
+package br.oo.alexandria.library.models;
 
+import br.oo.alexandria.library.models.LibraryUser;
 import java.util.*;
 
 public class Book {

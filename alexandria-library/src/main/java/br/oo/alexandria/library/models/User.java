@@ -1,4 +1,4 @@
-package br.oo.alexandria.library;
+package br.oo.alexandria.library.models;
 
 public class User {
 
