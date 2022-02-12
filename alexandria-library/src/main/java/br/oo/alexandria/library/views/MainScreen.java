@@ -5,7 +5,7 @@ import br.oo.alexandria.library.models.Book;
 public class MainScreen {
 
     public static void main(String[] args) {
-        AddBookScreen screen = new AddBookScreen();
+        LoginScreen screen = new LoginScreen();
         
     }
     
