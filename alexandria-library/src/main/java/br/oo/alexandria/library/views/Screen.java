@@ -72,6 +72,7 @@ public abstract class Screen {
     }
 
     public static void main(String[] args) {
+        
         LoginScreen screen = new LoginScreen();
 
     }

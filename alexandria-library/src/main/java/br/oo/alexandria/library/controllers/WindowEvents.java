@@ -4,7 +4,6 @@ import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
-import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
 import br.oo.alexandria.library.views.Screen;

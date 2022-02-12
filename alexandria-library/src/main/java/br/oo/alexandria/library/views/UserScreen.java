@@ -1,16 +1,15 @@
 package br.oo.alexandria.library.views;
 
-import br.oo.alexandria.library.controllers.BooksListing;
-import br.oo.alexandria.library.controllers.LoansListing;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class UserScreen extends Screen {
 
-//  private JButton goBackButton;
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton myLoansButton;
@@ -41,10 +40,22 @@ public class UserScreen extends Screen {
         
         buttonsPanel.setPreferredSize(new Dimension(Constants.MENU_WIDTH, 300));
 
-        this.booksButton.addActionListener(new BooksListing(this));
+        this.booksButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getFrame().setVisible(false);
+                new BookListingScreen();
+            }
+        });
         buttonsPanel.add(booksButton);
 
-        this.myLoansButton.addActionListener(new LoansListing(this));
+        this.myLoansButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getFrame().setVisible(false);
+                new LoanListingScreen();
+            }
+        });
         buttonsPanel.add(myLoansButton);
 
         getMainPanel().add(buttonsPanel, BorderLayout.CENTER);
