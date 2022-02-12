@@ -5,12 +5,16 @@ import br.oo.alexandria.library.controllers.BooksListing;
 import br.oo.alexandria.library.controllers.LoansListing;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class EmployeeScreen extends Screen {
 
 //  private JButton goBackButton;
+    private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
@@ -30,21 +34,26 @@ public class EmployeeScreen extends Screen {
     private void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
-        getFrame().setVisible(true);
-
         getMainPanel().setLayout(new BorderLayout());
 
+        buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new GridLayout(3, 1));
+        buttonsPanel.setPreferredSize(new Dimension(Constants.MENU_WIDTH, 300));
+
         this.booksButton.addActionListener(new BooksListing(this));
-        getMainPanel().add(booksButton);
+        buttonsPanel.add(booksButton);
 
         this.loansButton.addActionListener(new LoansListing(this));
-        getMainPanel().add(loansButton);
+        buttonsPanel.add(loansButton);
 
         this.addBookButton.addActionListener(new AddBook(this));
-        getMainPanel().add(addBookButton);
+        buttonsPanel.add(addBookButton);
 
+        getMainPanel().add(buttonsPanel);
+        
         getFrame().add(getMainPanel());
 
+        getFrame().setVisible(true);
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
 

@@ -26,7 +26,6 @@ public class UsersLoansScreen extends Screen {
     private void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
-        getFrame().setVisible(true);
 
         getMainPanel().setLayout(new BorderLayout());
 
@@ -39,6 +38,8 @@ public class UsersLoansScreen extends Screen {
         getMainPanel().add(listingPanel);
 
         getFrame().add(getMainPanel());
+
+        getFrame().setVisible(true);
 
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
