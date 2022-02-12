@@ -26,20 +26,39 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
 
     private void draw() {
         getFrame().setSize(Constants.WINDOW_DIMENSION);
-        getFrame().setVisible(true);
 
         getMainPanel().setLayout(new BorderLayout());
+        getMainPanel().setPreferredSize(Constants.WINDOW_DIMENSION);
+
+        GridLayout grid = new GridLayout(4, 2);
+        grid.setVgap(5);
+        grid.setHgap(10);
+
+        JPanel textFieldsPanel = new JPanel();
+        textFieldsPanel.setLayout(grid);
+        textFieldsPanel.setPreferredSize(new Dimension(300, 150));
 
         JLabel emailLabel = new JLabel(Constants.EMAIL_LABEL);
-        getMainPanel().add(emailLabel);
-        getMainPanel().add(emailField);
+        textFieldsPanel.add(emailLabel);
+        textFieldsPanel.add(emailField);
 
         JLabel passwordLabel = new JLabel(Constants.PASSWORD_LABEL);
-        getMainPanel().add(passwordLabel);
-        getMainPanel().add(passwordField);
+        textFieldsPanel.add(passwordLabel);
+        textFieldsPanel.add(passwordField);
+
+        getMainPanel().add(textFieldsPanel, BorderLayout.NORTH);
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setPreferredSize(new Dimension(150, 100));
 
         this.loginButton.addActionListener(new UserLogin(this));
-        getMainPanel().add(loginButton);
+
+        buttonsPanel.add(this.loginButton, BorderLayout.WEST);
+
+        buttonsPanel.add(this.signupButton, BorderLayout.EAST);
+
+        getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
+
 /*
         this.signupButton.addActionListener(new ActionListener() {
             @Override
@@ -49,11 +68,11 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
             }
 
         });
-
-        this.mainPanel.add(signupButton);
 */
 
+
         getFrame().add(getMainPanel());
+        getFrame().setVisible(true);
         
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
