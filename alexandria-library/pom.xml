@@ -18,7 +18,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>br.oo.alexandria.library.views.MainScreen</mainClass>
+                            <mainClass>br.oo.alexandria.library.views.Screen</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

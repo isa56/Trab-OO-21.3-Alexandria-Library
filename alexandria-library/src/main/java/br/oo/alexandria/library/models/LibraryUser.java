@@ -8,11 +8,11 @@ public class LibraryUser extends User {
         super(name, phone, email);
     }
 
-    public void returnBook(BookExemplary book) {
+    public void returnBook(Book book) {
         book.returnBook();
     }
 
-    public void lendBook(BookExemplary book) {
+    public void lendBook(Book book) {
         book.lendBook();
     }
 

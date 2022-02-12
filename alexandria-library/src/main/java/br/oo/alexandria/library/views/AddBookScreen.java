@@ -98,4 +98,38 @@ public class AddBookScreen extends Screen {
     }
 
 
+    public JTextField getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(JTextField nameField) {
+        this.nameField = nameField;
+    }
+
+    public JTextField getAuthorField() {
+        return authorField;
+    }
+
+    public void setAuthorField(JTextField authorField) {
+        this.authorField = authorField;
+    }
+
+    public JTextField getReleaseYearField() {
+        return releaseYearField;
+    }
+
+    public void setReleaseYearField(JTextField releaseYearField) {
+        this.releaseYearField = releaseYearField;
+    }
+
+    public JTextField getEditorField() {
+        return editorField;
+    }
+
+    public void setEditorField(JTextField editorField) {
+        this.editorField = editorField;
+    }
+
+    
+    
 }

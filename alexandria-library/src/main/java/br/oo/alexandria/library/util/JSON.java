@@ -1,7 +1,9 @@
 package br.oo.alexandria.library.util;
 
 import br.oo.alexandria.library.models.Book;
-import br.oo.alexandria.library.models.User;
+import br.oo.alexandria.library.models.Employee;
+import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.Manager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -39,19 +41,52 @@ public abstract class JSON {
         return books;
     }
 
-    public static User toUser(String content) {
+    public static LibraryUser toLibraryUser(String content) {
         Gson gson = new Gson();
-        User user = gson.fromJson(content, User.class);
+        LibraryUser libraryUser = gson.fromJson(content, LibraryUser.class);
 
-        return user;
+        return libraryUser;
     }
     
-    public static List<User> toUsers(String content) {
+    public static List<LibraryUser> toLibraryUsers(String content) {
         Gson gson = new Gson();
-        Type userType = new TypeToken<ArrayList<User>>() {
+        Type libraryUserType = new TypeToken<ArrayList<LibraryUser>>() {
         }.getType();
-        List<User> users = gson.fromJson(content, userType);
+        List<LibraryUser> libraryUsers = gson.fromJson(content, libraryUserType);
 
-        return users;
+        return libraryUsers;
     }
+    
+    public static Manager toManager(String content) {
+        Gson gson = new Gson();
+        Manager manager = gson.fromJson(content, Manager.class);
+
+        return manager;
+    }
+    
+    public static List<Manager> toManagers(String content) {
+        Gson gson = new Gson();
+        Type managerType = new TypeToken<ArrayList<Manager>>() {
+        }.getType();
+        List<Manager> managers = gson.fromJson(content, managerType);
+
+        return managers;
+    }
+    
+    public static Employee toEmployee(String content) {
+        Gson gson = new Gson();
+        Employee employee = gson.fromJson(content, Employee.class);
+
+        return employee;
+    }
+    
+    public static List<Employee> toEmployees(String content) {
+        Gson gson = new Gson();
+        Type employeeType = new TypeToken<ArrayList<Employee>>() {
+        }.getType();
+        List<Employee> employee = gson.fromJson(content, employeeType);
+
+        return employee;
+    }
+
 }

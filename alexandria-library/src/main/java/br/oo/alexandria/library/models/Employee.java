@@ -1,7 +1,6 @@
 package br.oo.alexandria.library.models;
 
 import br.oo.alexandria.library.Library;
-import br.oo.alexandria.library.models.User;
 import java.util.*;
 
 public class Employee extends User {
@@ -29,13 +28,7 @@ public class Employee extends User {
 
     public void addBook(String name, String author, String editor, int releaseYear, Genre genre) {
 
-        Book b = new Book();
-
-        b.setBookName(name);
-        b.setBookAuthor(author);
-        b.setEditorName(editor);
-        b.setReleaseYear(releaseYear);
-        b.setBookGenre(genre);
+        Book b = new Book(name, author, editor, releaseYear, genre);
 
         Library.addBook(b);
     }

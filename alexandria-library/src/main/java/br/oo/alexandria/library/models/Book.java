@@ -17,13 +17,13 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public Book(String bookName, String bookAuthor, String editorName, int releaseYear, Genre bookGenre, boolean isAvailable) {
+    public Book(String bookName, String bookAuthor, String editorName, int releaseYear, Genre bookGenre) {
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.editorName = editorName;
         this.releaseYear = releaseYear;
         this.bookGenre = bookGenre;
-        this.isAvailable = isAvailable;
+        this.isAvailable = true;
     }
     
     public void bookInfo() {
