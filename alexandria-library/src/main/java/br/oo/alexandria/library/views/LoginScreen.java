@@ -5,6 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import br.oo.alexandria.library.util.Constants;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
 
@@ -15,7 +17,7 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
 
     public LoginScreen() {
         super(Constants.LOGIN_LABEL);
-        
+
         this.emailField = new JTextField(Constants.FIELD_SIZE);
         this.passwordField = new JTextField(Constants.FIELD_SIZE);
         this.loginButton = new JButton(Constants.LOGIN_LABEL);
@@ -57,26 +59,23 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
 
         buttonsPanel.add(this.signupButton, BorderLayout.EAST);
 
-        getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
+        this.signupButton.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        getFrame().setVisible(false);
+                        new SignupScreen();
+                    }
+                }
+        );
 
-/*
-        this.signupButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loginFrame.setVisible(false);
-                new SignupScreen();
-            }
-
-        });
-*/
-
+        getMainPanel().add(this.signupButton);
 
         getFrame().add(getMainPanel());
         getFrame().setVisible(true);
         
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
-
     }
 
     public JTextField getEmailField() {
@@ -111,7 +110,4 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
         this.signupButton = signupButton;
     }
 
-    
-    
 }
-

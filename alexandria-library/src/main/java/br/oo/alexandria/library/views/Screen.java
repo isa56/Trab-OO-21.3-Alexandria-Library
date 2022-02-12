@@ -12,11 +12,6 @@ public abstract class Screen {
         this.frame = new JFrame(frameName);
         this.mainPanel = new JPanel();
     }
-    
-    public void packScreen() {  // Não sei se isso funciona
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.repaint();
-    }
 
     public JFrame getFrame() {
         return frame;

@@ -3,9 +3,13 @@ package br.oo.alexandria.library.views;
 import br.oo.alexandria.library.controllers.UserCreate;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.*;
 
 public class SignupScreen extends Screen {
+
+    private JPanel formPanel;
+    private JPanel buttonsPanel;
 
     private JTextField nameField;
     private JTextField emailField;
@@ -16,12 +20,12 @@ public class SignupScreen extends Screen {
 
     public SignupScreen() {
 
-        super(Constants.SIGNUP_LABEL);
+        super(Constants.LOGIN_LABEL);
 
-        this.nameField = new JTextField();
-        this.emailField = new JTextField();
-        this.phoneField = new JTextField();
-        this.passwordField = new JTextField();
+        this.nameField = new JTextField(Constants.FIELD_SIZE);
+        this.emailField = new JTextField(Constants.FIELD_SIZE);
+        this.phoneField = new JTextField(Constants.FIELD_SIZE);
+        this.passwordField = new JTextField(Constants.FIELD_SIZE);
         this.signupButton = new JButton(Constants.SIGNUP_LABEL);
 
         draw();
@@ -31,34 +35,54 @@ public class SignupScreen extends Screen {
     private void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
-        getFrame().setVisible(true);
 
         getMainPanel().setLayout(new BorderLayout());
 
-        JLabel nameLabel = new JLabel(Constants.NAME_LABEL);
-        getMainPanel().add(nameLabel);
-        getMainPanel().add(nameField);
-
-        JLabel emailLabel = new JLabel(Constants.EMAIL_LABEL);
-        getMainPanel().add(emailLabel);
-        getMainPanel().add(emailField);
-
-        JLabel phoneLabel = new JLabel(Constants.PHONE_LABEL);
-        getMainPanel().add(phoneLabel);
-        getMainPanel().add(phoneField);
-
-        JLabel passwordLabel = new JLabel(Constants.PASSWORD_LABEL);
-        getMainPanel().add(passwordLabel);
-        getMainPanel().add(passwordField);
-
-        this.signupButton.addActionListener(new UserCreate(this));
-        getMainPanel().add(signupButton);
+        drawForm();
+        drawButtons();
 
         getFrame().add(getMainPanel());
 
+        getFrame().setVisible(true);
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getFrame().repaint();
 
+    }
+
+    private void drawForm() {
+
+        formPanel = new JPanel();
+        formPanel.setLayout(new GridLayout(0, 1));
+
+        JLabel nameLabel = new JLabel(Constants.NAME_LABEL);
+        formPanel.add(nameLabel);
+        formPanel.add(nameField);
+
+        JLabel emailLabel = new JLabel(Constants.EMAIL_LABEL);
+        formPanel.add(emailLabel);
+        formPanel.add(emailField);
+
+        JLabel phoneLabel = new JLabel(Constants.PHONE_LABEL);
+        formPanel.add(phoneLabel);
+        formPanel.add(phoneField);
+
+        JLabel passwordLabel = new JLabel(Constants.PASSWORD_LABEL);
+        formPanel.add(passwordLabel);
+        formPanel.add(passwordField);
+
+                
+        getMainPanel().add(formPanel, BorderLayout.CENTER);
+
+    }
+
+    private void drawButtons() {
+
+        buttonsPanel = new JPanel();
+
+        this.signupButton.addActionListener(new UserCreate(this));
+        buttonsPanel.add(signupButton);
+
+        getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
     }
 
     public JTextField getNameField() {

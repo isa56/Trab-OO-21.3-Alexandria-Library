@@ -51,8 +51,8 @@ public abstract class Constants {
     public static final String[] LOANS_USER_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.RETURNING_LABEL};
 
     // DIMENSIONS:
-    public static final int WINDOW_WIDTH = 500;
-    public static final int WINDOW_HEIGHT = 300;
+    public static final int WINDOW_WIDTH = 600;
+    public static final int WINDOW_HEIGHT = 400;
     public static final int MENU_WIDTH = 400;
     public static final Dimension WINDOW_DIMENSION = new Dimension(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
     public static final Dimension MENU_DIMENSION = new Dimension(Constants.MENU_WIDTH, Constants.WINDOW_HEIGHT);

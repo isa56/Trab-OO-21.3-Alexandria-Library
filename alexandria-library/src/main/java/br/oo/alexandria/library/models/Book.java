@@ -12,6 +12,19 @@ public class Book {
     protected Genre bookGenre;
     protected List<LibraryUser> readerList = new ArrayList<>(); 
     protected boolean isAvailable;
+
+    public Book(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public Book(String bookName, String bookAuthor, String editorName, int releaseYear, Genre bookGenre, boolean isAvailable) {
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.editorName = editorName;
+        this.releaseYear = releaseYear;
+        this.bookGenre = bookGenre;
+        this.isAvailable = isAvailable;
+    }
     
     public void bookInfo() {
         
