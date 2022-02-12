@@ -72,7 +72,7 @@ public class AddBookScreen extends Screen {
 
         JLabel genreLabel = new JLabel(Constants.BOOK_GENRE_LABEL);
         formPanel.add(genreLabel);
-        formPanel.add(genreField);
+        formPanel.add(genreBox);
 
         this.addBookButton.addActionListener(new BookCreate(this));
         buttonPanel.add(addBookButton);
