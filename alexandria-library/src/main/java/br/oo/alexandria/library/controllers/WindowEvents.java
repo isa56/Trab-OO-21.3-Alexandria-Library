@@ -30,15 +30,7 @@ public class WindowEvents implements WindowListener {
         // Ler arquivo de livros:
         try {
             String readBookFile = FileIO.readFile("data/bookdata");
-            List<Book> bookList = JSON.toBooks(readBookFile);
-
-            DefaultListModel<Book> bookModel = new DefaultListModel<>();
-
-            for (Book book : bookList) {
-                bookModel.addElement(book);
-            }
-
-            screen.getBookList().setModel(bookModel);
+            Screen.setBookList(JSON.toBooks(readBookFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -46,15 +38,7 @@ public class WindowEvents implements WindowListener {
         // Ler arquivo de usuários da biblioteca:
         try {
             String readUserFile = FileIO.readFile("data/userdata");
-            List<LibraryUser> userList = JSON.toLibraryUsers(readUserFile);
-
-            DefaultListModel<LibraryUser> userModel = new DefaultListModel<>();
-
-            for (LibraryUser user : userList) {
-                userModel.addElement(user);
-            }
-
-            screen.getLibraryUsersList().setModel(userModel);
+            Screen.setLibraryUsersList(JSON.toLibraryUsers(readUserFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -62,15 +46,7 @@ public class WindowEvents implements WindowListener {
         // Ler arquivo de funcionários:
         try {
             String readEmployeeFile = FileIO.readFile("data/employeedata");
-            List<Employee> employeeList = JSON.toEmployees(readEmployeeFile);
-
-            DefaultListModel<Employee> employeeModel = new DefaultListModel<>();
-
-            for (Employee user : employeeList) {
-                employeeModel.addElement(user);
-            }
-
-            screen.getEmployeeList().setModel(employeeModel);
+            Screen.setEmployeeList(JSON.toEmployees(readEmployeeFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -78,15 +54,7 @@ public class WindowEvents implements WindowListener {
         // Ler arquivo de administradores:
         try {
             String readManagerFile = FileIO.readFile("data/managerdata");
-            List<Manager> managerList = JSON.toManagers(readManagerFile);
-
-            DefaultListModel<Manager> managerModel = new DefaultListModel<>();
-
-            for (Manager user : managerList) {
-                managerModel.addElement(user);
-            }
-
-            screen.getManagerList().setModel(managerModel);
+            Screen.setManagerList(JSON.toManagers(readManagerFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -98,56 +66,28 @@ public class WindowEvents implements WindowListener {
     public void windowClosing(WindowEvent e) {
 
         // Salvando a lista de livros:
-        ListModel<Book> bookModel = screen.getBookList().getModel();
-        List<Book> books = new ArrayList<>();
-
-        for (int i = 0; i < bookModel.getSize(); i++) {
-            books.add(bookModel.getElementAt(i));
-        }
-
-        String booksToJSON = JSON.toJSON(books);
+        String booksToJSON = JSON.toJSON(Screen.getBookList());
 
         System.out.println(booksToJSON);
 
         FileIO.writeFile("data/bookdata", booksToJSON);
 
         // Salvando a lista de usuários:
-        ListModel<LibraryUser> libUserModel = screen.getLibraryUsersList().getModel();
-        List<LibraryUser> libUsers = new ArrayList<>();
-
-        for (int i = 0; i < libUserModel.getSize(); i++) {
-            libUsers.add(libUserModel.getElementAt(i));
-        }
-
-        String libUserToJSON = JSON.toJSON(libUsers);
+        String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
 
         System.out.println(libUserToJSON);
 
         FileIO.writeFile("data/userdata", libUserToJSON);
 
         // Salvando a lista de funcionários:
-        ListModel<Employee> employeeModel = screen.getEmployeeList().getModel();
-        List<Employee> employees = new ArrayList<>();
-
-        for (int i = 0; i < employeeModel.getSize(); i++) {
-            employees.add(employeeModel.getElementAt(i));
-        }
-
-        String employeeToJSON = JSON.toJSON(employees);
+        String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
 
         System.out.println(employeeToJSON);
 
         FileIO.writeFile("data/employeedata", employeeToJSON);
 
         // Salvando a lista de gerentes:
-        ListModel<Manager> managerModel = screen.getManagerList().getModel();
-        List<Manager> managers = new ArrayList<>();
-
-        for (int i = 0; i < managerModel.getSize(); i++) {
-            managers.add(managerModel.getElementAt(i));
-        }
-
-        String managerToJSON = JSON.toJSON(managers);
+        String managerToJSON = JSON.toJSON(Screen.getManagerList());
 
         System.out.println(managerToJSON);
 

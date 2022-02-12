@@ -4,16 +4,19 @@ import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JPanel;
 
 public abstract class Screen {
 
-    private static JList<Book> bookList;
-    private static JList<LibraryUser> libraryUsersList;
-    private static JList<Employee> employeeList;
-    private static JList<Manager> managerList;
+    private static List<Book> bookList;
+    private static List<LibraryUser> libraryUsersList;
+    private static List<Employee> employeeList;
+    private static List<Manager> managerList;
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -21,38 +24,43 @@ public abstract class Screen {
     public Screen(String frameName) {
         this.frame = new JFrame(frameName);
         this.mainPanel = new JPanel();
+
+        Screen.bookList = new ArrayList<>();
+        Screen.libraryUsersList = new ArrayList<>();
+        Screen.employeeList = new ArrayList<>();
+        Screen.managerList = new ArrayList<>();
     }
 
-    public JList<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(JList<Book> bookList) {
-        this.bookList = bookList;
-    }
-
-    public JList<LibraryUser> getLibraryUsersList() {
-        return libraryUsersList;
-    }
-
-    public void setLibraryUsersList(JList<LibraryUser> libraryUsersList) {
-        this.libraryUsersList = libraryUsersList;
-    }
-
-    public JList<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(JList<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
-
-    public JList<Manager> getManagerList() {
+    public static List<Manager> getManagerList() {
         return managerList;
     }
 
-    public void setManagerList(JList<Manager> managerList) {
-        this.managerList = managerList;
+    public static void setManagerList(List<Manager> managerList) {
+        Screen.managerList = managerList;
+    }
+
+    public static List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public static void setEmployeeList(List<Employee> employeeList) {
+        Screen.employeeList = employeeList;
+    }
+
+    public static List<LibraryUser> getLibraryUsersList() {
+        return libraryUsersList;
+    }
+
+    public static void setLibraryUsersList(List<LibraryUser> libraryUsersList) {
+        Screen.libraryUsersList = libraryUsersList;
+    }
+
+    public static List<Book> getBookList() {
+        return bookList;
+    }
+
+    public static void setBookList(List<Book> bookList) {
+        Screen.bookList = bookList;
     }
 
     public JFrame getFrame() {
@@ -72,7 +80,7 @@ public abstract class Screen {
     }
 
     public static void main(String[] args) {
-        LoginScreen screen = new LoginScreen();
+        AddBookScreen screen = new AddBookScreen();
 
     }
 
