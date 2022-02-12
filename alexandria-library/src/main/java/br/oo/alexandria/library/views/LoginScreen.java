@@ -54,10 +54,7 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
         buttonsPanel.setPreferredSize(new Dimension(150, 100));
 
         this.loginButton.addActionListener(new UserLogin(this));
-
         buttonsPanel.add(this.loginButton, BorderLayout.WEST);
-
-        buttonsPanel.add(this.signupButton, BorderLayout.EAST);
 
         this.signupButton.addActionListener(
                 new ActionListener() {
@@ -69,7 +66,9 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
                 }
         );
 
-        getMainPanel().add(this.signupButton);
+        buttonsPanel.add(this.signupButton, BorderLayout.EAST);
+
+        getMainPanel().add(buttonsPanel);
 
         getFrame().add(getMainPanel());
         getFrame().setVisible(true);
