@@ -1,12 +1,14 @@
 package br.oo.alexandria.library.util;
 
+import br.oo.alexandria.library.models.Book;
+import br.oo.alexandria.library.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSON {
+public abstract class JSON {
 
     public static String toJSON(Object o) {
         Gson gson = new Gson();
@@ -20,7 +22,7 @@ public class JSON {
         return json;
     }
 
-    /*
+    
     public static Book toBook(String content) {
         Gson gson = new Gson();
         Book book = gson.fromJson(content, Book.class);
@@ -28,7 +30,7 @@ public class JSON {
         return book;
     }
     
-    public static List<Book> toBook(String content) {
+    public static List<Book> toBooks(String content) {
         Gson gson = new Gson();
         Type bookType = new TypeToken<ArrayList<Book>>() {
         }.getType();
@@ -44,7 +46,7 @@ public class JSON {
         return user;
     }
     
-    public static List<User> toUser(String content) {
+    public static List<User> toUsers(String content) {
         Gson gson = new Gson();
         Type userType = new TypeToken<ArrayList<User>>() {
         }.getType();
@@ -52,6 +54,4 @@ public class JSON {
 
         return users;
     }
-    
-     */
 }
