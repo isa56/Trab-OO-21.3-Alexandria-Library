@@ -6,6 +6,7 @@ import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.views.EmployeeScreen;
 import br.oo.alexandria.library.views.LoginScreen;
 import br.oo.alexandria.library.views.ManagerScreen;
+import br.oo.alexandria.library.views.Screen;
 import br.oo.alexandria.library.views.UserScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,9 +27,9 @@ public class UserLogin implements ActionListener {
         String email = screen.getEmailField().getText();
         String password = screen.getPasswordField().getText();
 
-        List<LibraryUser> libUserList = screen.getLibraryUsersList();
-        List<Employee> employeeList = screen.getEmployeeList();
-        List<Manager> managerList = screen.getManagerList();
+        List<LibraryUser> libUserList = Screen.getLibraryUsersList();
+        List<Employee> employeeList = Screen.getEmployeeList();
+        List<Manager> managerList = Screen.getManagerList();
 
         for (LibraryUser libUser : libUserList) {
             if (libUser.getEmail().equals(email)) {

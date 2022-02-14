@@ -9,6 +9,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 
+import javax.swing.JOptionPane;
+
 public class WindowEvents implements WindowListener {
 
     Screen screen;
@@ -22,101 +24,69 @@ public class WindowEvents implements WindowListener {
 
         // Ler arquivo de livros:
         try {
+            // Ler arquivo de livros:
             String readBookFile = FileIO.readFile(Constants.DATA_PATH + "bookdata.json");
             Screen.setBookList(JSON.toBooks(readBookFile));
 
-        } catch (FileNotFoundException ex) {
-        }
-        
-
-        // Ler arquivo de usuários da biblioteca:
-        try {
+            // Ler arquivo de usuários da biblioteca:
             String readUserFile = FileIO.readFile(Constants.DATA_PATH + "userdata.json");
             Screen.setLibraryUsersList(JSON.toLibraryUsers(readUserFile));
 
-        } catch (FileNotFoundException ex) {
-        }
-        
-        
-        // Ler arquivo de funcionários:
-        try {
+            // Ler arquivo de funcionários:
             String readEmployeeFile = FileIO.readFile(Constants.DATA_PATH + "employeedata.json");
             Screen.setEmployeeList(JSON.toEmployees(readEmployeeFile));
 
-        } catch (FileNotFoundException ex) {
-        }
-        
-        
-        // Ler arquivo de administradores:
-        try {
+            // Ler arquivo de administradores:
             String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "managerdata.json");
             Screen.setManagerList(JSON.toManagers(readManagerFile));
 
-        } catch (FileNotFoundException ex) {}
+            // Ler arquivo de empréstimos:
+            String readLoanFile = FileIO.readFile(Constants.DATA_PATH + "loandata.json");
+            Screen.setLoansList(JSON.toLoans(readLoanFile));
 
-        
-        // Ler arquivo de empréstimos:
-        try {
-            String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "loandata.json");
-            Screen.setLoansList(JSON.toLoans(readManagerFile));
+            this.screen.getFrame().repaint();
 
-        } catch (FileNotFoundException ex) {}
-
-        this.screen.getFrame().repaint();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this.screen.getFrame(), "Não foi possível abrir os arquivos dos dados");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this.screen.getFrame(), "Ocorreu um erro na leitura dos dados");
+        }
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
+        try {
+            // Salvando a lista de livros:
+            String booksToJSON = JSON.toJSON(Screen.getBookList());
+            System.out.println(booksToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
 
-        for (Book book : Screen.getBookList()) {
-            System.out.println(book.getBookName());
+            
+            // Salvando a lista de usuários:
+            String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
+            System.out.println(libUserToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
+            
+
+            // Salvando a lista de funcionários:
+            String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
+            System.out.println(employeeToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
+
+            
+            // Salvando a lista de gerentes:
+            String managerToJSON = JSON.toJSON(Screen.getManagerList());
+            System.out.println(managerToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
+
+            
+            // Salvando a lista de empréstimos:
+            String loanToJSON = JSON.toJSON(Screen.getLoansList());
+            System.out.println(loanToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this.screen.getFrame(), "Ocorreu um erro ao salvar os dados");
         }
-        
-        // Salvando a lista de livros:
-        String booksToJSON = JSON.toJSON(Screen.getBookList());
-
-        System.out.println(booksToJSON);
-        // System.out.println("Livros salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
-
-        
-        // Salvando a lista de usuários:
-        String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
-
-        // System.out.println(libUserToJSON);
-        System.out.println("Usuários salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
-
-        
-        // Salvando a lista de funcionários:
-        String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
-
-        // System.out.println(employeeToJSON);
-        System.out.println("Funcionários salvos");
-
-
-        FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
-
-        
-        // Salvando a lista de gerentes:
-        String managerToJSON = JSON.toJSON(Screen.getManagerList());
-
-        // System.out.println(managerToJSON);
-        System.out.println("Gerentes salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
-
-        
-        // Salvando a lista de empréstimos:
-        String loanToJSON = JSON.toJSON(Screen.getLoansList());
-
-        // System.out.println(loanToJSON);
-        System.out.println("Empréstimos salvos");
-
-
-        FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
     }
 
     @Override
@@ -140,56 +110,38 @@ public class WindowEvents implements WindowListener {
     }
 
     public static void saveFile() {
-        
-        for (Book book : Screen.getBookList()) {
-            System.out.println(book.getBookName());
+                try {
+            // Salvando a lista de livros:
+            String booksToJSON = JSON.toJSON(Screen.getBookList());
+            System.out.println(booksToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
+
+            
+            // Salvando a lista de usuários:
+            String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
+            System.out.println(libUserToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
+            
+
+            // Salvando a lista de funcionários:
+            String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
+            System.out.println(employeeToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
+
+            
+            // Salvando a lista de gerentes:
+            String managerToJSON = JSON.toJSON(Screen.getManagerList());
+            System.out.println(managerToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
+
+            
+            // Salvando a lista de empréstimos:
+            String loanToJSON = JSON.toJSON(Screen.getLoansList());
+            System.out.println(loanToJSON);
+            FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao salvar os dados");
         }
-        
-        // Salvando a lista de livros:
-        String booksToJSON = JSON.toJSON(Screen.getBookList());
-
-        System.out.println(booksToJSON);
-        // System.out.println("Livros salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
-
-        
-        // Salvando a lista de usuários:
-        String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
-
-        // System.out.println(libUserToJSON);
-        System.out.println("Usuários salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
-
-        
-        // Salvando a lista de funcionários:
-        String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
-
-        // System.out.println(employeeToJSON);
-        System.out.println("Funcionários salvos");
-
-
-        FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
-
-        
-        // Salvando a lista de gerentes:
-        String managerToJSON = JSON.toJSON(Screen.getManagerList());
-
-        // System.out.println(managerToJSON);
-        System.out.println("Gerentes salvos");
-
-        FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
-
-        
-        // Salvando a lista de empréstimos:
-        String loanToJSON = JSON.toJSON(Screen.getLoansList());
-
-        // System.out.println(loanToJSON);
-        System.out.println("Empréstimos salvos");
-
-
-        FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
 
     }
 
