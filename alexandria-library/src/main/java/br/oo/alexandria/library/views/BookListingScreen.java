@@ -1,11 +1,7 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.controllers.BookDelete;
-<<<<<<< HEAD
 import br.oo.alexandria.library.models.Book;
-=======
-import br.oo.alexandria.library.models.User;
->>>>>>> main
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
