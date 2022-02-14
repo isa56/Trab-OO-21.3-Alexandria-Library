@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
@@ -11,12 +12,12 @@ import javax.swing.*;
 
 public class UserScreen extends Screen {
 
-    private User user;
+    private LibraryUser user;
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton myLoansButton;
 
-    public UserScreen(User user) {
+    public UserScreen(LibraryUser user) {
 
         super(Constants.SCREEN_USER);
         

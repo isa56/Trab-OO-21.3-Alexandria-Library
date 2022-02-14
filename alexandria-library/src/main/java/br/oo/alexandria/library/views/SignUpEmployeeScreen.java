@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SignupEmployeeScreen extends Screen {
-
     
     private JPanel formPanel;
     private JPanel buttonsPanel;

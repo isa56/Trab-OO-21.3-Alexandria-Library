@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,14 +14,17 @@ import javax.swing.JPanel;
 public class EmployeeScreen extends Screen {
 
 //  private JButton goBackButton;
+    private Employee employee;
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
 
-    public EmployeeScreen() {
+    public EmployeeScreen(Employee employee) {
 
         super(Constants.SCREEN_USER);
+        
+        this.employee = employee;
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.loansButton = new JButton(Constants.MYLOAN_LABEL);

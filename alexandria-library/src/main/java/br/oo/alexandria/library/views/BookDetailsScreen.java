@@ -71,9 +71,9 @@ public class BookDetailsScreen extends Screen {
 
         String sAvaiable;
         if (book.isIsAvailable()) {
-            sAvaiable = "Sim";
+            sAvaiable = Constants.YES_LABEL;
         } else {
-            sAvaiable = "NÃ£o";
+            sAvaiable = Constants.NO_LABEL;
         }
         JLabel avaiable = new JLabel(sAvaiable);
         infoPanel.add(avaiable);
