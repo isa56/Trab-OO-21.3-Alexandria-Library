@@ -3,6 +3,7 @@ package br.oo.alexandria.library.util;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Manager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -87,6 +88,22 @@ public abstract class JSON {
         List<Employee> employee = gson.fromJson(content, employeeType);
 
         return employee;
+    }
+    
+    public static Loan toLoan(String content) {
+        Gson gson = new Gson();
+        Loan loan = gson.fromJson(content, Loan.class);
+
+        return loan;
+    }
+    
+    public static List<Loan> toLoans(String content) {
+        Gson gson = new Gson();
+        Type loanType = new TypeToken<ArrayList<Loan>>() {
+        }.getType();
+        List<Loan> loan = gson.fromJson(content, loanType);
+
+        return loan;
     }
 
 }

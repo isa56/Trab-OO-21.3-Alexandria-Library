@@ -1,7 +1,5 @@
 package br.oo.alexandria.library.views;
 
-import br.oo.alexandria.library.controllers.BooksListing;
-import br.oo.alexandria.library.controllers.LoansListing;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

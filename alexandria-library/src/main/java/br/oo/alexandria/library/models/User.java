@@ -7,11 +7,13 @@ public class User {
     protected String name;
     protected String phone;
     protected String email;
+    protected String password;
     
-    User(String name, String phone, String email) {
+    User(String name, String phone, String email, String password) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.password = password;
     }
     
     public int getId() {
@@ -44,6 +46,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     

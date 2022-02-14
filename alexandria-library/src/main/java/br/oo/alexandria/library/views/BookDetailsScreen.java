@@ -6,10 +6,8 @@ public class BookDetailsScreen extends Screen {
 
     public BookDetailsScreen() {
         super(Constants.BOOK_LABEL);
-    
-        
-        
-        
     }
+    
+    
 
 }

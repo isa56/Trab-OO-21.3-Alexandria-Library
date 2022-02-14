@@ -3,8 +3,8 @@ package br.oo.alexandria.library.controllers;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Manager;
-import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
 import br.oo.alexandria.library.views.Screen;
@@ -28,6 +28,7 @@ public class WindowEvents implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
 
+        
         // Ler arquivo de livros:
         try {
             String readBookFile = FileIO.readFile(dataPath + "bookdata.json");
@@ -35,6 +36,7 @@ public class WindowEvents implements WindowListener {
 
         } catch (FileNotFoundException ex) {
         }
+        
 
         // Ler arquivo de usuários da biblioteca:
         try {
@@ -44,6 +46,7 @@ public class WindowEvents implements WindowListener {
         } catch (FileNotFoundException ex) {
         }
         
+        
         // Ler arquivo de funcionários:
         try {
             String readEmployeeFile = FileIO.readFile(dataPath + "employeedata.json");
@@ -52,13 +55,21 @@ public class WindowEvents implements WindowListener {
         } catch (FileNotFoundException ex) {
         }
         
+        
         // Ler arquivo de administradores:
         try {
             String readManagerFile = FileIO.readFile(dataPath + "managerdata.json");
             Screen.setManagerList(JSON.toManagers(readManagerFile));
 
-        } catch (FileNotFoundException ex) {
-        }
+        } catch (FileNotFoundException ex) {}
+
+        
+        // Ler arquivo de empréstimos:
+        try {
+            String readManagerFile = FileIO.readFile(dataPath + "loandata.json");
+            Screen.setLoansList(JSON.toLoans(readManagerFile));
+
+        } catch (FileNotFoundException ex) {}
 
         screen.getFrame().repaint();
     }
@@ -66,6 +77,7 @@ public class WindowEvents implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
 
+        
         // Salvando a lista de livros:
         String booksToJSON = JSON.toJSON(Screen.getBookList());
 
@@ -73,6 +85,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile(dataPath + "bookdata.json", booksToJSON);
 
+        
         // Salvando a lista de usuários:
         String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
 
@@ -80,6 +93,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile(dataPath + "userdata.json", libUserToJSON);
 
+        
         // Salvando a lista de funcionários:
         String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
 
@@ -87,6 +101,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile(dataPath + "employeedata.json", employeeToJSON);
 
+        
         // Salvando a lista de gerentes:
         String managerToJSON = JSON.toJSON(Screen.getManagerList());
 
@@ -94,6 +109,13 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile(dataPath + "managerdata.json", managerToJSON);
 
+        
+        // Salvando a lista de empréstimos:
+        String loanToJSON = JSON.toJSON(Screen.getLoansList());
+
+        System.out.println(loanToJSON);
+
+        FileIO.writeFile(dataPath + "loandata.json", loanToJSON);
     }
 
     @Override

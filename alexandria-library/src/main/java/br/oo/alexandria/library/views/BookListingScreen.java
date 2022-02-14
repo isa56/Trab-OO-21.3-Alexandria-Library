@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.controllers.BookDelete;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
@@ -7,12 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 public class BookListingScreen extends Screen {
-
+    
     private JPanel listingPanel;
     private JTable listingTable;
+    private JButton deleteBookButton;
     private DefaultTableModel booksTableModel;
 
     private int lastIndex;
@@ -20,9 +23,12 @@ public class BookListingScreen extends Screen {
     public BookListingScreen() {
         super(Constants.BOOKS_LABEL);
 
+        deleteBookButton = new JButton(Constants.DELETE_LABEL);
         booksTableModel = new DefaultTableModel(Constants.BOOKS_LISTING, 0);
-        listingTable = new JTable();
+        listingTable = new JTable(booksTableModel);
 
+        
+        
         draw();
 
     }
@@ -39,6 +45,8 @@ public class BookListingScreen extends Screen {
         
         this.listingPanel.add(new JScrollPane(listingTable));
         
+        deleteBookButton.addActionListener(new BookDelete(this));
+        getMainPanel().add(deleteBookButton);
         
         getMainPanel().add(listingPanel);
         

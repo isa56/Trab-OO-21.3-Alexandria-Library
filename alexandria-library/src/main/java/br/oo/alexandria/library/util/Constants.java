@@ -8,7 +8,8 @@ public abstract class Constants {
     public static final String PROGRAM_NAME = "Alexandria";
     public static final String SCREEN_LOGIN = "Login";
     public static final String SCREEN_SIGNUP = "Cadastro";
-    public static final String SCREEN_USER = "Cadastro";
+    public static final String SCREEN_USER = "Usuário";
+    public static final String MANAGER_LABEL = "Gerente";
     
     // LABELS:
     public static final String NAME_LABEL = "Nome";
@@ -43,6 +44,8 @@ public abstract class Constants {
     public static final String RETURNING_LABEL = "Devolução";
     public static final String RETURN_LABEL = "Devolver";
     public static final String DELETE_LABEL = "Deletar";
+    public static final String ADD_MANAGER_LABEL = "Adicionar Gerente";
+    public static final String ADD_EMPLOYEE_LABEL = "Adicionar Funcionário";
 
     // LISTING STRING ARRAYS:
     public static final String[] BOOKS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL, Constants.DELETE_LABEL};

@@ -1,6 +1,7 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.controllers.WindowEvents;
+import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
@@ -18,6 +19,7 @@ public abstract class Screen {
     private static List<LibraryUser> libraryUsersList;
     private static List<Employee> employeeList;
     private static List<Manager> managerList;
+    private static List<Loan> loansList;
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -66,6 +68,14 @@ public abstract class Screen {
         Screen.bookList = bookList;
     }
 
+    public static List<Loan> getLoansList() {
+        return loansList;
+    }
+
+    public static void setLoansList(List<Loan> list) {
+        Screen.loansList = list;
+    }
+
     public JFrame getFrame() {
         return frame;
     }
@@ -83,7 +93,8 @@ public abstract class Screen {
     }
 
     public static void main(String[] args) {
-        AddBookScreen screen = new AddBookScreen();
+        
+        BookListingScreen screen = new BookListingScreen();
 
     }
 

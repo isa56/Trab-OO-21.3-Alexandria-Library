@@ -17,7 +17,7 @@ public class UsersLoansScreen extends Screen {
         super(Constants.LOAN_LABEL);
 
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
-        listingTable = new JTable();
+        listingTable = new JTable(loansTableModel);
 
         draw();
 
@@ -78,6 +78,4 @@ public class UsersLoansScreen extends Screen {
         this.lastIndex = lastIndex;
     }
 
-    
-    
 }
