@@ -1,20 +1,12 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.Book;
-import br.oo.alexandria.library.models.Employee;
-import br.oo.alexandria.library.models.LibraryUser;
-import br.oo.alexandria.library.models.Loan;
-import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.util.Constants;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
 import br.oo.alexandria.library.views.Screen;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 
 public class WindowEvents implements WindowListener {
 
@@ -30,16 +22,8 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de livros:
         try {
-            String readBookFile = FileIO.readFile("data/bookdata");
-            List<Book> bookList = JSON.toBooks(readBookFile);
-
-            DefaultListModel<Book> bookModel = new DefaultListModel<>();
-
-            for (Book book : bookList) {
-                bookModel.addElement(book);
-            }
-
-            screen.getBookList().setModel(bookModel);
+            String readBookFile = FileIO.readFile(Constants.DATA_PATH + "bookdata.json");
+            Screen.setBookList(JSON.toBooks(readBookFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -47,16 +31,8 @@ public class WindowEvents implements WindowListener {
 
         // Ler arquivo de usuários da biblioteca:
         try {
-            String readUserFile = FileIO.readFile("data/userdata");
-            List<LibraryUser> userList = JSON.toLibraryUsers(readUserFile);
-
-            DefaultListModel<LibraryUser> userModel = new DefaultListModel<>();
-
-            for (LibraryUser user : userList) {
-                userModel.addElement(user);
-            }
-
-            screen.getLibraryUsersList().setModel(userModel);
+            String readUserFile = FileIO.readFile(Constants.DATA_PATH + "userdata.json");
+            Screen.setLibraryUsersList(JSON.toLibraryUsers(readUserFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -64,16 +40,8 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de funcionários:
         try {
-            String readEmployeeFile = FileIO.readFile("data/employeedata");
-            List<Employee> employeeList = JSON.toEmployees(readEmployeeFile);
-
-            DefaultListModel<Employee> employeeModel = new DefaultListModel<>();
-
-            for (Employee user : employeeList) {
-                employeeModel.addElement(user);
-            }
-
-            screen.getEmployeeList().setModel(employeeModel);
+            String readEmployeeFile = FileIO.readFile(Constants.DATA_PATH + "employeedata.json");
+            Screen.setEmployeeList(JSON.toEmployees(readEmployeeFile));
 
         } catch (FileNotFoundException ex) {
         }
@@ -81,36 +49,20 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de administradores:
         try {
-            String readManagerFile = FileIO.readFile("data/managerdata");
-            List<Manager> managerList = JSON.toManagers(readManagerFile);
-
-            DefaultListModel<Manager> managerModel = new DefaultListModel<>();
-
-            for (Manager user : managerList) {
-                managerModel.addElement(user);
-            }
-
-            screen.getManagerList().setModel(managerModel);
+            String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "managerdata.json");
+            Screen.setManagerList(JSON.toManagers(readManagerFile));
 
         } catch (FileNotFoundException ex) {}
 
         
         // Ler arquivo de empréstimos:
         try {
-            String readLoansFile = FileIO.readFile("data/loandata");
-            List<Loan> loanList = JSON.toLoans(readLoansFile);
-
-            DefaultListModel<Loan> loanModel = new DefaultListModel<>();
-
-            for (Loan loan : loanList) {
-                loanModel.addElement(loan);
-            }
-
-            screen.getLoansList().setModel(loanModel);
+            String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "loandata.json");
+            Screen.setLoansList(JSON.toLoans(readManagerFile));
 
         } catch (FileNotFoundException ex) {}
 
-        screen.getFrame().repaint();
+        this.screen.getFrame().repaint();
     }
 
     @Override
@@ -118,79 +70,43 @@ public class WindowEvents implements WindowListener {
 
         
         // Salvando a lista de livros:
-        ListModel<Book> bookModel = screen.getBookList().getModel();
-        List<Book> books = new ArrayList<>();
-
-        for (int i = 0; i < bookModel.getSize(); i++) {
-            books.add(bookModel.getElementAt(i));
-        }
-
-        String booksToJSON = JSON.toJSON(books);
+        String booksToJSON = JSON.toJSON(Screen.getBookList());
 
         System.out.println(booksToJSON);
 
-        FileIO.writeFile("data/bookdata", booksToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
 
         
         // Salvando a lista de usuários:
-        ListModel<LibraryUser> libUserModel = screen.getLibraryUsersList().getModel();
-        List<LibraryUser> libUsers = new ArrayList<>();
-
-        for (int i = 0; i < libUserModel.getSize(); i++) {
-            libUsers.add(libUserModel.getElementAt(i));
-        }
-
-        String libUserToJSON = JSON.toJSON(libUsers);
+        String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
 
         System.out.println(libUserToJSON);
 
-        FileIO.writeFile("data/userdata", libUserToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
 
         
         // Salvando a lista de funcionários:
-        ListModel<Employee> employeeModel = screen.getEmployeeList().getModel();
-        List<Employee> employees = new ArrayList<>();
-
-        for (int i = 0; i < employeeModel.getSize(); i++) {
-            employees.add(employeeModel.getElementAt(i));
-        }
-
-        String employeeToJSON = JSON.toJSON(employees);
+        String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
 
         System.out.println(employeeToJSON);
 
-        FileIO.writeFile("data/employeedata", employeeToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
 
         
         // Salvando a lista de gerentes:
-        ListModel<Manager> managerModel = screen.getManagerList().getModel();
-        List<Manager> managers = new ArrayList<>();
-
-        for (int i = 0; i < managerModel.getSize(); i++) {
-            managers.add(managerModel.getElementAt(i));
-        }
-
-        String managerToJSON = JSON.toJSON(managers);
+        String managerToJSON = JSON.toJSON(Screen.getManagerList());
 
         System.out.println(managerToJSON);
 
-        FileIO.writeFile("data/managerdata", managerToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
 
         
         // Salvando a lista de empréstimos:
-        ListModel<Loan> loanModel = screen.getLoansList().getModel();
-        List<Loan> loans = new ArrayList<>();
-
-        for (int i = 0; i < loanModel.getSize(); i++) {
-            loans.add(loanModel.getElementAt(i));
-        }
-
-        String loanToJSON = JSON.toJSON(loans);
+        String loanToJSON = JSON.toJSON(Screen.getLoansList());
 
         System.out.println(loanToJSON);
 
-        FileIO.writeFile("data/loandata", loanToJSON);
-
+        FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
     }
 
     @Override

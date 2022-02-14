@@ -1,10 +1,14 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.controllers.BookCreate;
+import br.oo.alexandria.library.models.Genre;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +22,7 @@ public class AddBookScreen extends Screen {
     private JTextField authorField;
     private JTextField releaseYearField;
     private JTextField editorField;
-    private JTextField genreField;
+    private JComboBox<Genre> genreBox;
 
     private JButton addBookButton;
 
@@ -30,8 +34,15 @@ public class AddBookScreen extends Screen {
         this.authorField = new JTextField(Constants.FIELD_SIZE);
         this.releaseYearField = new JTextField(Constants.FIELD_SIZE);
         this.editorField = new JTextField(Constants.FIELD_SIZE);
-        this.genreField = new JTextField(Constants.FIELD_SIZE);
+        
+        DefaultComboBoxModel<Genre> model = new DefaultComboBoxModel<>();
 
+        for (Genre genre : Genre.values()) {
+            model.addElement(genre);
+        }
+
+        this.genreBox = new JComboBox<>(model);
+        
         this.addBookButton = new JButton(Constants.SIGNUP_LABEL);
 
         draw();
@@ -66,7 +77,7 @@ public class AddBookScreen extends Screen {
 
         JLabel genreLabel = new JLabel(Constants.BOOK_GENRE_LABEL);
         formPanel.add(genreLabel);
-        formPanel.add(genreField);
+        formPanel.add(genreBox);
 
         this.addBookButton.addActionListener(new BookCreate(this));
         buttonPanel.add(addBookButton);
@@ -82,6 +93,15 @@ public class AddBookScreen extends Screen {
         getFrame().repaint();
 
     }
+
+    public JComboBox<Genre> getGenreBox() {
+        return genreBox;
+    }
+
+    public void setGenreBox(JComboBox<Genre> genreBox) {
+        this.genreBox = genreBox;
+    }
+
 
     public JTextField getNameField() {
         return nameField;
@@ -113,14 +133,6 @@ public class AddBookScreen extends Screen {
 
     public void setEditorField(JTextField editorField) {
         this.editorField = editorField;
-    }
-
-    public JTextField getGenreField() {
-        return genreField;
-    }
-
-    public void setGenreField(JTextField genreField) {
-        this.genreField = genreField;
     }
 
     
