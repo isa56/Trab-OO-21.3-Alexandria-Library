@@ -77,15 +77,6 @@ public class EmployeeScreen extends Screen {
 
     }
 
-    /*
-    public JButton getGoBackButton() {
-        return goBackButton;
-    }
-
-    public void setGoBackButton(JButton goBackButton) {
-        this.goBackButton = goBackButton;
-    }
-     */
     public JButton getBooksButton() {
         return booksButton;
     }

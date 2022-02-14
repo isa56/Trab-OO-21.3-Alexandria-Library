@@ -6,7 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
 
-public class SignupScreen extends Screen {
+public class SignupUserScreen extends Screen {
 
     private JPanel formPanel;
     private JPanel buttonsPanel;
@@ -18,7 +18,7 @@ public class SignupScreen extends Screen {
 
     private JButton signupButton;
 
-    public SignupScreen() {
+    public SignupUserScreen() {
 
         super(Constants.LOGIN_LABEL);
 

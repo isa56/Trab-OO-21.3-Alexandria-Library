@@ -21,11 +21,11 @@ public class BookCreate implements ActionListener {
 
         model.addElement(
                 new Book(
-                        screen.getNameField().getText(),
-                        screen.getAuthorField().getText(),
-                        screen.getEditorField().getText(),
-                        Integer.parseInt(screen.getReleaseYearField().getText()),
-                        (screen.getGenreField().getText())
+                    screen.getNameField().getText(),
+                    screen.getAuthorField().getText(),
+                    screen.getEditorField().getText(),
+                    Integer.parseInt(screen.getReleaseYearField().getText()),
+                    (screen.getGenreField().getText())
                 )
         );
 
