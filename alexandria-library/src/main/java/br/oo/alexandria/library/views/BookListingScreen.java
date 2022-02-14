@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -92,11 +93,17 @@ public class BookListingScreen extends Screen {
         bookListingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getFrame().setVisible(false);
-                new BookDetailsScreen(
-                        user,
-                        Screen.getBookList().get(listingTable.getSelectedRow())
-                );
+                int selectedRow = listingTable.getSelectedRow();
+                
+                if (selectedRow == -1) {
+                    JOptionPane.showMessageDialog(getFrame(), "Selecione um livro para remoção");
+                } else {
+                    getFrame().setVisible(false);
+                    new BookDetailsScreen(
+                            user,
+                            Screen.getBookList().get(selectedRow)
+                    );
+                }
             }
         });
 
