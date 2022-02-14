@@ -1,10 +1,12 @@
 package br.oo.alexandria.library.controllers;
 
 import br.oo.alexandria.library.models.Book;
+import br.oo.alexandria.library.models.Genre;
 import br.oo.alexandria.library.views.AddBookScreen;
+import br.oo.alexandria.library.views.Screen;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
 
 public class BookCreate implements ActionListener {
 
@@ -17,21 +19,19 @@ public class BookCreate implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        DefaultListModel<Book> model = (DefaultListModel<Book>) screen.getBookList().getModel();
+        Genre selectedGenre = (Genre) screen.getGenreBox().getSelectedItem();
         
-        model.addElement(
+        Screen.getBookList().add(
             new Book(
                 screen.getNameField().getText(),
                 screen.getAuthorField().getText(),
                 screen.getEditorField().getText(),
                 Integer.parseInt(screen.getReleaseYearField().getText()),
-                (screen.getGenreField().getText())
+                selectedGenre
             )        
         );
         
-        screen.getBookList().setModel(model);
         screen.getFrame().repaint();
-        
     }
 
 }

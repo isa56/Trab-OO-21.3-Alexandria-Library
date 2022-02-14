@@ -36,6 +36,11 @@ public class AddBookScreen extends Screen {
         this.editorField = new JTextField(Constants.FIELD_SIZE);
         
         DefaultComboBoxModel<Genre> model = new DefaultComboBoxModel<>();
+
+        for (Genre genre : Genre.values()) {
+            model.addElement(genre);
+        }
+
         this.genreBox = new JComboBox<>(model);
         
         this.addBookButton = new JButton(Constants.SIGNUP_LABEL);

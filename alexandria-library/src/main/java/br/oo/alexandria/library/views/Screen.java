@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.controllers.WindowEvents;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
@@ -29,6 +30,8 @@ public abstract class Screen {
         Screen.libraryUsersList = new ArrayList<>();
         Screen.employeeList = new ArrayList<>();
         Screen.managerList = new ArrayList<>();
+
+        this.frame.addWindowListener(new WindowEvents(this));
     }
 
     public static List<Manager> getManagerList() {

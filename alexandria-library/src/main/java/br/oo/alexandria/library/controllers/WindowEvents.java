@@ -19,6 +19,7 @@ import javax.swing.ListModel;
 public class WindowEvents implements WindowListener {
 
     Screen screen;
+    private static String dataPath = "src/main/java/br/oo/alexandria/library/data/";
 
     public WindowEvents(Screen screen) {
         this.screen = screen;
@@ -29,7 +30,7 @@ public class WindowEvents implements WindowListener {
 
         // Ler arquivo de livros:
         try {
-            String readBookFile = FileIO.readFile("data/bookdata");
+            String readBookFile = FileIO.readFile(dataPath + "bookdata.json");
             Screen.setBookList(JSON.toBooks(readBookFile));
 
         } catch (FileNotFoundException ex) {
@@ -37,7 +38,7 @@ public class WindowEvents implements WindowListener {
 
         // Ler arquivo de usuários da biblioteca:
         try {
-            String readUserFile = FileIO.readFile("data/userdata");
+            String readUserFile = FileIO.readFile(dataPath + "userdata.json");
             Screen.setLibraryUsersList(JSON.toLibraryUsers(readUserFile));
 
         } catch (FileNotFoundException ex) {
@@ -45,7 +46,7 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de funcionários:
         try {
-            String readEmployeeFile = FileIO.readFile("data/employeedata");
+            String readEmployeeFile = FileIO.readFile(dataPath + "employeedata.json");
             Screen.setEmployeeList(JSON.toEmployees(readEmployeeFile));
 
         } catch (FileNotFoundException ex) {
@@ -53,7 +54,7 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de administradores:
         try {
-            String readManagerFile = FileIO.readFile("data/managerdata");
+            String readManagerFile = FileIO.readFile(dataPath + "managerdata.json");
             Screen.setManagerList(JSON.toManagers(readManagerFile));
 
         } catch (FileNotFoundException ex) {
@@ -70,28 +71,28 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(booksToJSON);
 
-        FileIO.writeFile("data/bookdata", booksToJSON);
+        FileIO.writeFile(dataPath + "bookdata.json", booksToJSON);
 
         // Salvando a lista de usuários:
         String libUserToJSON = JSON.toJSON(Screen.getLibraryUsersList());
 
         System.out.println(libUserToJSON);
 
-        FileIO.writeFile("data/userdata", libUserToJSON);
+        FileIO.writeFile(dataPath + "userdata.json", libUserToJSON);
 
         // Salvando a lista de funcionários:
         String employeeToJSON = JSON.toJSON(Screen.getEmployeeList());
 
         System.out.println(employeeToJSON);
 
-        FileIO.writeFile("data/employeedata", employeeToJSON);
+        FileIO.writeFile(dataPath + "employeedata.json", employeeToJSON);
 
         // Salvando a lista de gerentes:
         String managerToJSON = JSON.toJSON(Screen.getManagerList());
 
         System.out.println(managerToJSON);
 
-        FileIO.writeFile("data/managerdata", managerToJSON);
+        FileIO.writeFile(dataPath + "managerdata.json", managerToJSON);
 
     }
 
