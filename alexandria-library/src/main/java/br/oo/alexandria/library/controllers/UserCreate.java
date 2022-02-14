@@ -1,9 +1,13 @@
 package br.oo.alexandria.library.controllers;
 
 import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.views.LoginScreen;
 import br.oo.alexandria.library.views.SignupUserScreen;
+import br.oo.alexandria.library.views.Screen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 public class UserCreate implements ActionListener {
@@ -17,9 +21,9 @@ public class UserCreate implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        DefaultListModel<LibraryUser> model = new DefaultListModel<>();
-
-        model.addElement(
+        List<LibraryUser> model = Screen.getLibraryUsersList();
+        
+        model.add(
                 new LibraryUser(
                         screen.getNameField().getText(),
                         screen.getPhoneField().getText(),
@@ -28,8 +32,11 @@ public class UserCreate implements ActionListener {
                 )
         );
 
-        screen.getLibraryUsersList().setModel(model);
+        Screen.setLibraryUsersList(model);
 
+        screen.getFrame().setVisible(false);
+        new LoginScreen();
+        
         screen.getFrame().repaint();
     }
 

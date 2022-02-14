@@ -47,7 +47,7 @@ public class EmployeeScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new BookListingScreen();
+                new BookListingScreen(employee);
             }
         });
         buttonsPanel.add(booksButton);

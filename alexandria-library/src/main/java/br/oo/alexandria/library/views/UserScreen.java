@@ -49,7 +49,7 @@ public class UserScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new BookListingScreen();
+                new BookListingScreen(user);
             }
         });
         buttonsPanel.add(booksButton);

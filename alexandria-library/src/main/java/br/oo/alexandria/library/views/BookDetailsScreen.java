@@ -1,40 +1,46 @@
 package br.oo.alexandria.library.views;
 
-/*******************************************************************************
-ESTA TELA FOI FEITA POR NÉLIO, QUE, POR MOTIVOS PESSOAIS, NÃO PÔDE PARTICIPAR 
-ATIVAMENTE DESTA PARTE DO TRABALHO
-*******************************************************************************/
-
+/**
+ * *****************************************************************************
+ * ESTA TELA FOI FEITA POR NÉLIO, QUE, POR MOTIVOS PESSOAIS, NÃO PÔDE PARTICIPAR
+ * ATIVAMENTE DESTA PARTE DO TRABALHO
+ * *****************************************************************************
+ */
+import br.oo.alexandria.library.controllers.LoanCreate;
 import br.oo.alexandria.library.models.Book;
-import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 
 public class BookDetailsScreen extends Screen {
 
+    private User user;
     private Book book;
     private JPanel infoPanel;
     private JPanel buttonPanel;
-    private JPanel titlePanel;
     private JButton backButton;
     private JButton loanButton;
-        
+
     private int lastIndex;
 
-    public BookDetailsScreen(Book book) {
+    public BookDetailsScreen(User user, Book book) {
+
         super(book.getBookName());
 
+        this.user = user;
         this.book = book;
         this.lastIndex = 0;
+
+        infoPanel = new JPanel();
+        buttonPanel = new JPanel();
+        backButton = new JButton(Constants.GOBACK_LABEL);
+        loanButton = new JButton(Constants.GETLOAN_LABEL);
 
         draw();
     }
@@ -48,38 +54,52 @@ public class BookDetailsScreen extends Screen {
     }
 
     private void draw() {
+
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 
         getMainPanel().setLayout(new BorderLayout());
 
-        infoPanel = new JPanel();
-        titlePanel = new JPanel();
-        buttonPanel = new JPanel();
-        
-        JLabel nameLabel = new JLabel(Constants.BOOK_LABEL + ": " + book.getBookName());
-        titlePanel.add(nameLabel);
+        infoPanel.add(new JLabel(Constants.BOOK_LABEL + ": " + book.getBookName()));
 
-        JLabel authorLabel = new JLabel(Constants.BOOK_AUTHOR_LABEL + ": " + book.getBookAuthor());
-        infoPanel.add(authorLabel);
+        infoPanel.add(new JLabel(Constants.BOOK_AUTHOR_LABEL + ": " + book.getBookAuthor()));
 
-        JLabel releaseYear = new JLabel(Constants.BOOK_RELEASEDATE_LABEL + ": " + Integer.toString(book.getReleaseYear()));
-        infoPanel.add(releaseYear);
+        infoPanel.add(new JLabel(Constants.BOOK_RELEASEDATE_LABEL + ": " + Integer.toString(book.getReleaseYear())));
 
-        JLabel editor = new JLabel(Constants.BOOK_EDITOR_LABEL + ": " + book.getEditorName());
-        infoPanel.add(editor);
+        infoPanel.add(new JLabel(Constants.BOOK_EDITOR_LABEL + ": " + book.getEditorName()));
 
-        JLabel genre = new JLabel(Constants.BOOK_GENRE_LABEL + ": " + book.getBookGenre().name());
-        infoPanel.add(genre);
+        infoPanel.add(new JLabel(Constants.BOOK_GENRE_LABEL + ": " + book.getBookGenre().name()));
 
-        String sAvaiable;
+        String isAvailable;
+
         if (book.isIsAvailable()) {
-            sAvaiable = Constants.YES_LABEL;
+            isAvailable = Constants.YES_LABEL;
         } else {
-            sAvaiable = Constants.NO_LABEL;
+            isAvailable = Constants.NO_LABEL;
         }
-        JLabel avaiable = new JLabel(sAvaiable);
-        infoPanel.add(avaiable);
-        
+
+        infoPanel.add(new JLabel(Constants.BOOK_AVAILABILITY_LABEL + ": " + isAvailable));
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getFrame().setVisible(false);
+                new BookListingScreen(user);
+            }
+        });
+
+        loanButton.addActionListener(new LoanCreate(this, book, user));
+
+        buttonPanel.add(backButton, BorderLayout.EAST);
+        buttonPanel.add(loanButton, BorderLayout.WEST);
+
+        getMainPanel().add(infoPanel, BorderLayout.CENTER);
+        getMainPanel().add(buttonPanel, BorderLayout.SOUTH);
+
+        getFrame().add(getMainPanel());
+
+        getFrame().setVisible(true);
+        getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getFrame().repaint();
 
     }
 }

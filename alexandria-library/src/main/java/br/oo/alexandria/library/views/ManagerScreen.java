@@ -50,7 +50,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new BookListingScreen();
+                new BookListingScreen(manager);
             }
         });
         buttonsPanel.add(booksButton);
@@ -59,7 +59,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new LoanListingScreen();
+                new LoanListingScreen(manager);
             }
         });
         buttonsPanel.add(loansButton);

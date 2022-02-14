@@ -7,6 +7,7 @@ import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.Genre;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,15 +90,27 @@ public class Screen {
     }
 
     public static void main(String[] args) {
-        
-        BookDetailsScreen screen = new BookDetailsScreen(new Book(
-                "Conectadas",
-                "Clara Alves",
-                "Não sei",
-                2020,
-                Genre.ROMANCE
-        ));
+        /*
+        BookDetailsScreen screen = new BookDetailsScreen(
+                new User(
+                        "Isadora",
+                        "988405138",
+                        "isadora@email.com",
+                        "isaisaisa"
+                ),
+                new Book(
+                        "Conectadas",
+                        "Clara Alves",
+                        "Não sei",
+                        2020,
+                        Genre.ROMANCE
+                )
+        );
+         */
 
+        managerList.add(new Manager("admin", "00000000", "admin", "admin"));
+
+        LoginScreen screen = new LoginScreen();
     }
 
 }

@@ -10,7 +10,6 @@ public class Book {
     protected String editorName;
     protected int releaseYear;
     protected Genre bookGenre;
-    protected List<LibraryUser> readerList = new ArrayList<>(); 
     protected boolean isAvailable;
 
     public Book(String bookName) {
@@ -67,14 +66,6 @@ public class Book {
         this.bookGenre = bookGenre;
     }
 
-    public List<LibraryUser> getReaderList() {
-        return readerList;
-    }
-
-    public void addReader(LibraryUser user) {
-        readerList.add(user);
-    }
-    
     public boolean isIsAvailable() {
         return isAvailable;
     }

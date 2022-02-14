@@ -33,7 +33,6 @@ public class UserLogin implements ActionListener {
         for (LibraryUser libUser : libUserList) {
             if (libUser.getEmail().equals(email)) {
                 if (libUser.getPassword().equals(password)) {
-                    JOptionPane.showMessageDialog(screen.getFrame(), "Login de usuário " + libUser.getName() + " realizado com sucesso!");
                     this.screen.getFrame().setVisible(false);
                     new UserScreen(libUser);
                 } else {
@@ -45,7 +44,6 @@ public class UserLogin implements ActionListener {
         for (Employee employee : employeeList) {
             if (employee.getEmail().equals(email)) {
                 if (employee.getPassword().equals(password)) {
-                    JOptionPane.showMessageDialog(screen.getFrame(), "Login de funcionário " + employee.getName() + " realizado com sucesso!");
                     this.screen.getFrame().setVisible(false);
                     new EmployeeScreen(employee);
                 } else {
@@ -57,7 +55,6 @@ public class UserLogin implements ActionListener {
         for (Manager manager : managerList) {
             if (manager.getEmail().equals(email)) {
                 if (manager.getPassword().equals(password)) {
-                    JOptionPane.showMessageDialog(screen.getFrame(), "Login de gerente " + manager.getName() + " realizado com sucesso!");
                     this.screen.getFrame().setVisible(false);
                     new ManagerScreen(manager);
                 } else {

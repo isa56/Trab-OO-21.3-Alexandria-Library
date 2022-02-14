@@ -1,9 +1,12 @@
 package br.oo.alexandria.library.controllers;
 
+import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.views.SignupManagerScreen;
+import br.oo.alexandria.library.views.Screen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 public class ManagerCreate implements ActionListener {
@@ -17,9 +20,10 @@ public class ManagerCreate implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        DefaultListModel<Manager> model = new DefaultListModel<>();
+        
+        List<Manager> model = Screen.getManagerList();
 
-        model.addElement(
+        model.add(
                 new Manager(
                         screen.getNameField().getText(),
                         screen.getPhoneField().getText(),
@@ -28,7 +32,7 @@ public class ManagerCreate implements ActionListener {
                 )
         );
 
-        screen.getManagerList().setModel(model);
+        Screen.setManagerList(model);
 
         screen.getFrame().repaint();
     }

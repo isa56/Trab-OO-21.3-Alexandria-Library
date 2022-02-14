@@ -33,6 +33,7 @@ public abstract class Constants {
     public static final String BOOK_LENTDATE_LABEL = "Data de empréstimo";
     public static final String BOOK_RETURNEDDATE_LABEL = "Data de devolução";
     public static final String MYLOAN_LABEL = "Meus Empréstimos";
+    public static final String GETLOAN_LABEL = "Pegar Emprestado";
     
     public static final String LOGIN_LABEL = "Entrar";
     public static final String SIGNUP_LABEL = "Cadastrar";
@@ -46,6 +47,7 @@ public abstract class Constants {
     public static final String DELETE_LABEL = "Deletar";
     public static final String ADD_MANAGER_LABEL = "Adicionar Gerente";
     public static final String ADD_EMPLOYEE_LABEL = "Adicionar Funcionário";
+    public static final String SEE_BOOKS_LABEL = "Ver Livros";
 
     // LISTING STRING ARRAYS:
     public static final String[] BOOKS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL};
