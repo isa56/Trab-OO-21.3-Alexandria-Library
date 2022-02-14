@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 public class BookDetailsScreen extends Screen {
@@ -26,10 +27,11 @@ public class BookDetailsScreen extends Screen {
     private JPanel titlePanel;
     private JButton backButton;
     private JButton loanButton;
+        
     private int lastIndex;
 
     public BookDetailsScreen(Book book) {
-        super(Constants.BOOK_LABEL);
+        super(book.getBookName());
 
         this.book = book;
         this.lastIndex = 0;
@@ -53,20 +55,20 @@ public class BookDetailsScreen extends Screen {
         infoPanel = new JPanel();
         titlePanel = new JPanel();
         buttonPanel = new JPanel();
-
-        JLabel nameLabel = new JLabel(book.getBookName());
+        
+        JLabel nameLabel = new JLabel(Constants.BOOK_LABEL + ": " + book.getBookName());
         titlePanel.add(nameLabel);
 
-        JLabel authorLabel = new JLabel(book.getBookAuthor());
+        JLabel authorLabel = new JLabel(Constants.BOOK_AUTHOR_LABEL + ": " + book.getBookAuthor());
         infoPanel.add(authorLabel);
 
-        JLabel releaseYear = new JLabel(Integer.toString(book.getReleaseYear()));
+        JLabel releaseYear = new JLabel(Constants.BOOK_RELEASEDATE_LABEL + ": " + Integer.toString(book.getReleaseYear()));
         infoPanel.add(releaseYear);
 
-        JLabel editor = new JLabel(book.getEditorName());
+        JLabel editor = new JLabel(Constants.BOOK_EDITOR_LABEL + ": " + book.getEditorName());
         infoPanel.add(editor);
 
-        JLabel genre = new JLabel(book.getBookGenre().name());
+        JLabel genre = new JLabel(Constants.BOOK_GENRE_LABEL + ": " + book.getBookGenre().name());
         infoPanel.add(genre);
 
         String sAvaiable;
@@ -77,7 +79,7 @@ public class BookDetailsScreen extends Screen {
         }
         JLabel avaiable = new JLabel(sAvaiable);
         infoPanel.add(avaiable);
-        DefaultListModel<Book> model = new DefaultListModel<>();
+        
 
     }
 }

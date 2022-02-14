@@ -2,6 +2,7 @@ package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
+import br.oo.alexandria.library.models.Genre;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.models.Loan;
@@ -83,7 +84,13 @@ public abstract class Screen {
 
     public static void main(String[] args) {
         
-        LoginScreen screen = new LoginScreen();
+        BookDetailsScreen screen = new BookDetailsScreen(new Book(
+                "Conectadas",
+                "Clara Alves",
+                "Não sei",
+                2020,
+                Genre.ROMANCE
+        ));
 
     }
 
