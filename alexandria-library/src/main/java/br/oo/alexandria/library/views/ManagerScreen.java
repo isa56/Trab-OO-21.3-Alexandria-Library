@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -12,16 +13,19 @@ import javax.swing.JPanel;
 
 public class ManagerScreen extends Screen {
 
-    private JPanel buttonsPanel;
+    private Manager manager;
     
+    private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
     private JButton addManagerButton;
     private JButton addEmployeeButton;
 
-    public ManagerScreen() {
+    public ManagerScreen(Manager manager) {
         super(Constants.MANAGER_LABEL);
+        
+        this.manager = manager;
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.loansButton = new JButton(Constants.MYLOAN_LABEL);
@@ -74,7 +78,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new SignUpManagerScreen();
+                new SignupManagerScreen();
             }
         });
         buttonsPanel.add(addManagerButton);
@@ -83,7 +87,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new SignUpEmployeeScreen();
+                new SignupEmployeeScreen();
             }
         });
         buttonsPanel.add(addEmployeeButton);

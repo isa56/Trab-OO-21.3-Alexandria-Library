@@ -1,5 +1,7 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,13 +12,16 @@ import javax.swing.*;
 
 public class UserScreen extends Screen {
 
+    private LibraryUser user;
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton myLoansButton;
 
-    public UserScreen() {
+    public UserScreen(LibraryUser user) {
 
         super(Constants.SCREEN_USER);
+        
+        this.user = user;
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.myLoansButton = new JButton(Constants.MYLOAN_LABEL);
@@ -53,7 +58,7 @@ public class UserScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new LoanListingScreen();
+                new UsersLoansScreen(user);
             }
         });
         buttonsPanel.add(myLoansButton);
@@ -62,15 +67,6 @@ public class UserScreen extends Screen {
         
     }
 
-    /*
-    public JButton getGoBackButton() {
-        return goBackButton;
-    }
-
-    public void setGoBackButton(JButton goBackButton) {
-        this.goBackButton = goBackButton;
-    }
-     */
     public JButton getBooksButton() {
         return booksButton;
     }

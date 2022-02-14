@@ -45,12 +45,17 @@ public class Loan {
     public void setReturnedDate(Date returnedDate) {
         this.returnedDate = returnedDate;
     }
-    
+
     public Date getReturnDate() {
-        Calendar c = Calendar.getInstance();
-        c.setTime(this.lentDate);
-        c.add(Calendar.DATE, 14);
-        return (c.getTime());
+        if (returnedDate == null) {
+            Calendar c = Calendar.getInstance();
+            c.setTime(this.lentDate);
+            c.add(Calendar.DATE, 14);
+            return (c.getTime());
+        }
+        else {
+            return returnedDate;
+        }
     }
 
     public boolean isLoanFinished() {
@@ -60,5 +65,5 @@ public class Loan {
     public void setLoanFinished(boolean loanFinished) {
         this.loanFinished = loanFinished;
     }
-    
+
 }

@@ -89,7 +89,7 @@ public class Screen {
 
     public static void main(String[] args) {
         
-        EmployeeScreen screen = new EmployeeScreen();
+        LoginScreen screen = new LoginScreen();
 
     }
 
