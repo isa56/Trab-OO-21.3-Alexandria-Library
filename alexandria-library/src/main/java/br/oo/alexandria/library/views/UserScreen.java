@@ -16,6 +16,7 @@ public class UserScreen extends Screen {
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton myLoansButton;
+    private JLabel message;
 
     public UserScreen(LibraryUser user) {
 
@@ -26,6 +27,8 @@ public class UserScreen extends Screen {
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.myLoansButton = new JButton(Constants.MYLOAN_LABEL);
 
+        this.message = new JLabel(Constants.MESSAGE + user.getName());
+        
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 
         draw();
@@ -45,6 +48,8 @@ public class UserScreen extends Screen {
         
         buttonsPanel.setPreferredSize(new Dimension(Constants.MENU_WIDTH, 300));
 
+        getMainPanel().add(message, BorderLayout.NORTH);
+        
         this.booksButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

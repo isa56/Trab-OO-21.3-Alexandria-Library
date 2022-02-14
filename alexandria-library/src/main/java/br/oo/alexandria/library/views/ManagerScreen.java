@@ -9,23 +9,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ManagerScreen extends Screen {
 
     private Manager manager;
-    
+
     private JPanel buttonsPanel;
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
     private JButton addManagerButton;
     private JButton addEmployeeButton;
+    private JLabel message;
 
     public ManagerScreen(Manager manager) {
         super(Constants.MANAGER_LABEL);
-        
+
         this.manager = manager;
+
+        this.message = new JLabel(Constants.MESSAGE + manager.getName());
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.loansButton = new JButton(Constants.MYLOAN_LABEL);
@@ -34,13 +38,15 @@ public class ManagerScreen extends Screen {
         this.addEmployeeButton = new JButton(Constants.ADD_EMPLOYEE_LABEL);
 
         draw();
-        
+
     }
-    
-        private void draw() {
+
+    private void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
         getMainPanel().setLayout(new BorderLayout());
+
+        getMainPanel().add(message, BorderLayout.NORTH);
 
         buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(3, 1));
@@ -91,8 +97,7 @@ public class ManagerScreen extends Screen {
             }
         });
         buttonsPanel.add(addEmployeeButton);
-        
-        
+
         getMainPanel().add(buttonsPanel);
 
         getFrame().add(getMainPanel());
@@ -102,6 +107,5 @@ public class ManagerScreen extends Screen {
         getFrame().repaint();
 
     }
-
 
 }

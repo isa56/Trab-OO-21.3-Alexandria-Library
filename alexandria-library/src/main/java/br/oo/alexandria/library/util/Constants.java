@@ -10,6 +10,7 @@ public abstract class Constants {
     public static final String SCREEN_SIGNUP = "Cadastro";
     public static final String SCREEN_USER = "Usuário";
     public static final String MANAGER_LABEL = "Gerente";
+    public static final String MESSAGE = "Olá, ";
     
     // LABELS:
     public static final String NAME_LABEL = "Nome";

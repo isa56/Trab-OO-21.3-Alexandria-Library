@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class EmployeeScreen extends Screen {
@@ -19,12 +20,15 @@ public class EmployeeScreen extends Screen {
     private JButton booksButton;
     private JButton loansButton;
     private JButton addBookButton;
+    private JLabel message;
 
     public EmployeeScreen(Employee employee) {
 
         super(Constants.SCREEN_USER);
-        
+
         this.employee = employee;
+
+        this.message = new JLabel(Constants.MESSAGE + employee.getName());
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
         this.loansButton = new JButton(Constants.LOAN_LABEL);
@@ -38,6 +42,8 @@ public class EmployeeScreen extends Screen {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
         getMainPanel().setLayout(new BorderLayout());
+
+        getMainPanel().add(message, BorderLayout.NORTH);
 
         buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridLayout(3, 1));

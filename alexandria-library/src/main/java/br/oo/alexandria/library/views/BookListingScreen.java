@@ -48,9 +48,9 @@ public class BookListingScreen extends Screen {
             Object[] tableRow = {book.getBookName(), book.getBookAuthor()};
             booksTableModel.addRow(tableRow);
         }
-
+        
         listingTable = new JTable(booksTableModel);
-
+        
         draw();
     }
 
@@ -72,17 +72,18 @@ public class BookListingScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                
-                if(user instanceof Manager)
+
+                if (user instanceof Manager) {
                     new ManagerScreen((Manager) user);
-                else if (user instanceof Employee)
+                } else if (user instanceof Employee) {
                     new EmployeeScreen((Employee) user);
-                else
+                } else {
                     new UserScreen((LibraryUser) user);
+                }
 
             }
         });
-        
+
         buttonsPanel.add(backButton, BorderLayout.WEST);
 
         if (!(user instanceof LibraryUser)) {
@@ -94,7 +95,7 @@ public class BookListingScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = listingTable.getSelectedRow();
-                
+
                 if (selectedRow == -1) {
                     JOptionPane.showMessageDialog(getFrame(), "Selecione um livro para remoção");
                 } else {
@@ -106,7 +107,7 @@ public class BookListingScreen extends Screen {
                 }
             }
         });
-
+        
         buttonsPanel.add(bookListingButton, BorderLayout.EAST);
 
         getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);

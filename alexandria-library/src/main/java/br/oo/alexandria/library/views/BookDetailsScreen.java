@@ -11,6 +11,7 @@ import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -59,6 +60,8 @@ public class BookDetailsScreen extends Screen {
 
         getMainPanel().setLayout(new BorderLayout());
 
+        infoPanel.setLayout(new GridLayout(0,1));
+        
         infoPanel.add(new JLabel(Constants.BOOK_LABEL + ": " + book.getBookName()));
 
         infoPanel.add(new JLabel(Constants.BOOK_AUTHOR_LABEL + ": " + book.getBookAuthor()));
