@@ -13,13 +13,13 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public abstract class Screen {
+public class Screen {
 
-    private static List<Book> bookList;
-    private static List<LibraryUser> libraryUsersList;
-    private static List<Employee> employeeList;
-    private static List<Manager> managerList;
-    private static List<Loan> loansList;
+    private static List<Book> bookList = new ArrayList<>();
+    private static List<LibraryUser> libraryUsersList = new ArrayList<>();
+    private static List<Employee> employeeList = new ArrayList<>();
+    private static List<Manager> managerList = new ArrayList<>();
+    private static List<Loan> loansList = new ArrayList<>();
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -27,11 +27,6 @@ public abstract class Screen {
     public Screen(String frameName) {
         this.frame = new JFrame(frameName);
         this.mainPanel = new JPanel();
-
-        Screen.bookList = new ArrayList<>();
-        Screen.libraryUsersList = new ArrayList<>();
-        Screen.employeeList = new ArrayList<>();
-        Screen.managerList = new ArrayList<>();
 
         this.frame.addWindowListener(new WindowEvents(this));
     }
@@ -94,7 +89,7 @@ public abstract class Screen {
 
     public static void main(String[] args) {
         
-        BookListingScreen screen = new BookListingScreen();
+        EmployeeScreen screen = new EmployeeScreen();
 
     }
 

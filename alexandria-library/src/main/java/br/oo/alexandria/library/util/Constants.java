@@ -48,7 +48,7 @@ public abstract class Constants {
     public static final String ADD_EMPLOYEE_LABEL = "Adicionar Funcionário";
 
     // LISTING STRING ARRAYS:
-    public static final String[] BOOKS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL, Constants.DELETE_LABEL};
+    public static final String[] BOOKS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL};
     public static final String[] BOOKS_USER_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL, Constants.BOOK_AVAILABILITY_LABEL};
     public static final String[] LOANS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.BOOK_READER_LABEL};
     public static final String[] LOANS_USER_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.RETURNING_LABEL};
@@ -61,5 +61,6 @@ public abstract class Constants {
     public static final Dimension MENU_DIMENSION = new Dimension(Constants.MENU_WIDTH, Constants.WINDOW_HEIGHT);
     public static final int FIELD_SIZE = 10;
     
-    
+    // DATA
+    public static final String DATA_PATH = "src/main/java/br/oo/alexandria/library/data/";
 }

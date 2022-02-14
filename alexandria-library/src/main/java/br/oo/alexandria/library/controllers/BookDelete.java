@@ -1,10 +1,12 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.views.BookListingScreen;
+import br.oo.alexandria.library.views.Screen;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class BookDelete implements ActionListener {
 
@@ -16,20 +18,23 @@ public class BookDelete implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        int selectedRow = this.screen.getListingTable().getSelectedRow();
 
-        int selectedBookIndex = screen.getBookList().getSelectedIndex();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this.screen.getFrame(), "Selecione um livro para remoção");
+        } else {
+            DefaultTableModel model = this.screen.getBooksTableModel();
 
-        DefaultListModel<Book> model = (DefaultListModel<Book>) screen.getBookList().getModel();
+            try {
+                model.removeRow(selectedRow);
+                Screen.getBookList().remove(selectedRow);
+    
+                this.screen.getFrame().repaint();
+    
+            } catch (Exception excep) {
 
-        try {
-
-            model.remove(selectedBookIndex);
-            screen.getBookList().remove(selectedBookIndex);
-
-            screen.getFrame().repaint();
-
-        } catch (Exception excep) {}
-
+            }
+        }
     }
 
 }

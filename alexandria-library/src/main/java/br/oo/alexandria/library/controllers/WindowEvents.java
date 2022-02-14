@@ -1,25 +1,16 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.Book;
-import br.oo.alexandria.library.models.Employee;
-import br.oo.alexandria.library.models.LibraryUser;
-import br.oo.alexandria.library.models.Loan;
-import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.util.Constants;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
 import br.oo.alexandria.library.views.Screen;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
 
 public class WindowEvents implements WindowListener {
 
     Screen screen;
-    private static String dataPath = "src/main/java/br/oo/alexandria/library/data/";
 
     public WindowEvents(Screen screen) {
         this.screen = screen;
@@ -31,7 +22,7 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de livros:
         try {
-            String readBookFile = FileIO.readFile(dataPath + "bookdata.json");
+            String readBookFile = FileIO.readFile(Constants.DATA_PATH + "bookdata.json");
             Screen.setBookList(JSON.toBooks(readBookFile));
 
         } catch (FileNotFoundException ex) {
@@ -40,7 +31,7 @@ public class WindowEvents implements WindowListener {
 
         // Ler arquivo de usuários da biblioteca:
         try {
-            String readUserFile = FileIO.readFile(dataPath + "userdata.json");
+            String readUserFile = FileIO.readFile(Constants.DATA_PATH + "userdata.json");
             Screen.setLibraryUsersList(JSON.toLibraryUsers(readUserFile));
 
         } catch (FileNotFoundException ex) {
@@ -49,7 +40,7 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de funcionários:
         try {
-            String readEmployeeFile = FileIO.readFile(dataPath + "employeedata.json");
+            String readEmployeeFile = FileIO.readFile(Constants.DATA_PATH + "employeedata.json");
             Screen.setEmployeeList(JSON.toEmployees(readEmployeeFile));
 
         } catch (FileNotFoundException ex) {
@@ -58,7 +49,7 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de administradores:
         try {
-            String readManagerFile = FileIO.readFile(dataPath + "managerdata.json");
+            String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "managerdata.json");
             Screen.setManagerList(JSON.toManagers(readManagerFile));
 
         } catch (FileNotFoundException ex) {}
@@ -66,12 +57,12 @@ public class WindowEvents implements WindowListener {
         
         // Ler arquivo de empréstimos:
         try {
-            String readManagerFile = FileIO.readFile(dataPath + "loandata.json");
+            String readManagerFile = FileIO.readFile(Constants.DATA_PATH + "loandata.json");
             Screen.setLoansList(JSON.toLoans(readManagerFile));
 
         } catch (FileNotFoundException ex) {}
 
-        screen.getFrame().repaint();
+        this.screen.getFrame().repaint();
     }
 
     @Override
@@ -83,7 +74,7 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(booksToJSON);
 
-        FileIO.writeFile(dataPath + "bookdata.json", booksToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "bookdata.json", booksToJSON);
 
         
         // Salvando a lista de usuários:
@@ -91,7 +82,7 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(libUserToJSON);
 
-        FileIO.writeFile(dataPath + "userdata.json", libUserToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "userdata.json", libUserToJSON);
 
         
         // Salvando a lista de funcionários:
@@ -99,7 +90,7 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(employeeToJSON);
 
-        FileIO.writeFile(dataPath + "employeedata.json", employeeToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "employeedata.json", employeeToJSON);
 
         
         // Salvando a lista de gerentes:
@@ -107,7 +98,7 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(managerToJSON);
 
-        FileIO.writeFile(dataPath + "managerdata.json", managerToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "managerdata.json", managerToJSON);
 
         
         // Salvando a lista de empréstimos:
@@ -115,7 +106,7 @@ public class WindowEvents implements WindowListener {
 
         System.out.println(loanToJSON);
 
-        FileIO.writeFile(dataPath + "loandata.json", loanToJSON);
+        FileIO.writeFile(Constants.DATA_PATH + "loandata.json", loanToJSON);
     }
 
     @Override
