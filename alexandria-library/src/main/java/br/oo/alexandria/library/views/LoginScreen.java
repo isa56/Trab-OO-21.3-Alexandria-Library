@@ -61,7 +61,7 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         getFrame().setVisible(false);
-                        new SignupScreen();
+                        new SignupUserScreen();
                     }
                 }
         );

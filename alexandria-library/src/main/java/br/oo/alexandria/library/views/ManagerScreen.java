@@ -74,7 +74,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new SignUpManagerScreen();
+                new SignupManagerScreen();
             }
         });
         buttonsPanel.add(addManagerButton);
@@ -83,7 +83,7 @@ public class ManagerScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new SignUpEmployeeScreen();
+                new SignupEmployeeScreen();
             }
         });
         buttonsPanel.add(addEmployeeButton);

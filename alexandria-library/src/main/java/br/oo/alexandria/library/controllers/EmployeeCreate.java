@@ -1,26 +1,26 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.LibraryUser;
-import br.oo.alexandria.library.views.SignupUserScreen;
+import br.oo.alexandria.library.models.Employee;
+import br.oo.alexandria.library.views.SignupEmployeeScreen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
 
-public class UserCreate implements ActionListener {
+public class EmployeeCreate implements ActionListener {
 
-    SignupUserScreen screen;
+    SignupEmployeeScreen screen;
 
-    public UserCreate(SignupUserScreen screen) {
+    public EmployeeCreate(SignupEmployeeScreen screen) {
         this.screen = screen;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        DefaultListModel<LibraryUser> model = new DefaultListModel<>();
+        DefaultListModel<Employee> model = new DefaultListModel<>();
 
         model.addElement(
-                new LibraryUser(
+                new Employee(
                         screen.getNameField().getText(),
                         screen.getPhoneField().getText(),
                         screen.getEmailField().getText(),
@@ -28,7 +28,7 @@ public class UserCreate implements ActionListener {
                 )
         );
 
-        screen.getLibraryUsersList().setModel(model);
+        screen.getEmployeeList().setModel(model);
 
         screen.getFrame().repaint();
     }

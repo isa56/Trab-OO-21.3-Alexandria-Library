@@ -1,5 +1,10 @@
 package br.oo.alexandria.library.views;
 
+/*******************************************************************************
+ESTA TELA FOI FEITA POR NÉLIO, QUE, POR MOTIVOS PESSOAIS, NÃO PÔDE PARTICIPAR 
+ATIVAMENTE DESTA PARTE DO TRABALHO
+*******************************************************************************/
+
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.util.Constants;
@@ -14,72 +19,65 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 public class BookDetailsScreen extends Screen {
-    
+
     private Book book;
-    private JPanel formPanel;
-    private JPanel titlePanel;
+    private JPanel infoPanel;
     private JPanel buttonPanel;
+    private JPanel titlePanel;
     private JButton backButton;
     private JButton loanButton;
-    private JList<Book> lista;
     private int lastIndex;
 
-    public BookDetailsScreen(Book book){
+    public BookDetailsScreen(Book book) {
         super(Constants.BOOK_LABEL);
+
+        this.book = book;
         this.lastIndex = 0;
-        
+
         draw();
     }
-    
-     public int getLastIndex(){
+
+    public int getLastIndex() {
         return lastIndex;
     }
 
-    public void setLastIndex(int lastIndex){
+    public void setLastIndex(int lastIndex) {
         this.lastIndex = lastIndex;
     }
-   
-    
-    private void draw(){
+
+    private void draw() {
         getFrame().setSize(Constants.WINDOW_DIMENSION);
-        
+
         getMainPanel().setLayout(new BorderLayout());
-        
-        formPanel = new JPanel();
+
+        infoPanel = new JPanel();
         titlePanel = new JPanel();
         buttonPanel = new JPanel();
-        
+
         JLabel nameLabel = new JLabel(book.getBookName());
         titlePanel.add(nameLabel);
-        
+
         JLabel authorLabel = new JLabel(book.getBookAuthor());
-        formPanel.add(authorLabel);
-        
+        infoPanel.add(authorLabel);
+
         JLabel releaseYear = new JLabel(Integer.toString(book.getReleaseYear()));
-        formPanel.add(releaseYear);
-        
+        infoPanel.add(releaseYear);
+
         JLabel editor = new JLabel(book.getEditorName());
-        formPanel.add(editor);
-        
+        infoPanel.add(editor);
+
         JLabel genre = new JLabel(book.getBookGenre().name());
-        formPanel.add(genre);
-        
+        infoPanel.add(genre);
+
         String sAvaiable;
-        if(book.isIsAvailable()){
+        if (book.isIsAvailable()) {
             sAvaiable = "Sim";
-        }else{
+        } else {
             sAvaiable = "NÃ£o";
         }
         JLabel avaiable = new JLabel(sAvaiable);
-        formPanel.add(avaiable);
+        infoPanel.add(avaiable);
         DefaultListModel<Book> model = new DefaultListModel<>();
-        
-        lista = new JList<>(model);
-        lista.setVisible(true);
-        lista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        lista.addListSelectionListener(new TratarLista(this));
-        
-        formPanel.add(new JScrollPane(lista), BorderLayout.WEST);
-        
-        }
+
+    }
 }
