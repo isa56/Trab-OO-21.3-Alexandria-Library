@@ -1,26 +1,29 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.models.User;
+import br.oo.alexandria.library.views.EmployeeScreen;
+import br.oo.alexandria.library.views.ManagerScreen;
 import br.oo.alexandria.library.views.SignupManagerScreen;
 import br.oo.alexandria.library.views.Screen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 public class ManagerCreate implements ActionListener {
 
     SignupManagerScreen screen;
-
-    public ManagerCreate(SignupManagerScreen screen) {
+    User user;
+    
+    public ManagerCreate(SignupManagerScreen screen, User user) {
         this.screen = screen;
+        this.user = user;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        
         List<Manager> model = Screen.getManagerList();
 
         model.add(
@@ -33,6 +36,14 @@ public class ManagerCreate implements ActionListener {
         );
 
         Screen.setManagerList(model);
+
+        screen.getFrame().setVisible(false);
+        WindowEvents.saveFile();
+        if (user instanceof Manager) {
+            new ManagerScreen((Manager) user);
+        } else {
+            new EmployeeScreen((Employee) user);
+        }
 
         screen.getFrame().repaint();
     }

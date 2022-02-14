@@ -1,10 +1,15 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.controllers.BookCreate;
+import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.Genre;
+import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -16,6 +21,7 @@ import javax.swing.JTextField;
 
 public class AddBookScreen extends Screen {
 
+    private User user;
     private JPanel formPanel;
     private JPanel buttonPanel;
     private JTextField nameField;
@@ -25,16 +31,18 @@ public class AddBookScreen extends Screen {
     private JComboBox<Genre> genreBox;
 
     private JButton addBookButton;
+    private JButton backButton;
 
-    public AddBookScreen() {
+    public AddBookScreen(User user) {
 
         super(Constants.SIGNUP_LABEL);
 
+        this.user = user;
         this.nameField = new JTextField(Constants.FIELD_SIZE);
         this.authorField = new JTextField(Constants.FIELD_SIZE);
         this.releaseYearField = new JTextField(Constants.FIELD_SIZE);
         this.editorField = new JTextField(Constants.FIELD_SIZE);
-        
+
         DefaultComboBoxModel<Genre> model = new DefaultComboBoxModel<>();
 
         for (Genre genre : Genre.values()) {
@@ -42,8 +50,9 @@ public class AddBookScreen extends Screen {
         }
 
         this.genreBox = new JComboBox<>(model);
-        
+
         this.addBookButton = new JButton(Constants.SIGNUP_LABEL);
+        this.backButton = new JButton(Constants.GOBACK_LABEL);
 
         draw();
 
@@ -54,9 +63,9 @@ public class AddBookScreen extends Screen {
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 
         getMainPanel().setLayout(new BorderLayout());
-        
+
         formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(5,1));
+        formPanel.setLayout(new GridLayout(5, 1));
         buttonPanel = new JPanel();
 
         JLabel nameLabel = new JLabel(Constants.BOOKS_LABEL);
@@ -79,12 +88,27 @@ public class AddBookScreen extends Screen {
         formPanel.add(genreLabel);
         formPanel.add(genreBox);
 
-        this.addBookButton.addActionListener(new BookCreate(this));
-        buttonPanel.add(addBookButton);
+        this.addBookButton.addActionListener(new BookCreate(this, user));
+        buttonPanel.add(addBookButton, BorderLayout.EAST);
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getFrame().setVisible(false);
+
+                if (user instanceof Manager) {
+                    new ManagerScreen((Manager) user);
+                } else {
+                    new EmployeeScreen((Employee) user);
+                }
+            }
+        });
+        
+        buttonPanel.add(backButton, BorderLayout.WEST);
 
         getMainPanel().add(formPanel, BorderLayout.CENTER);
         getMainPanel().add(buttonPanel, BorderLayout.SOUTH);
-        
+
         getFrame().add(getMainPanel());
 
         getFrame().setVisible(true);
@@ -101,7 +125,6 @@ public class AddBookScreen extends Screen {
     public void setGenreBox(JComboBox<Genre> genreBox) {
         this.genreBox = genreBox;
     }
-
 
     public JTextField getNameField() {
         return nameField;
@@ -135,6 +158,4 @@ public class AddBookScreen extends Screen {
         this.editorField = editorField;
     }
 
-    
-    
 }

@@ -27,7 +27,7 @@ public class EmployeeScreen extends Screen {
         this.employee = employee;
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
-        this.loansButton = new JButton(Constants.MYLOAN_LABEL);
+        this.loansButton = new JButton(Constants.LOAN_LABEL);
         this.addBookButton = new JButton(Constants.ADD_BOOK_LABEL);
 
         draw();
@@ -56,7 +56,7 @@ public class EmployeeScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new LoanListingScreen();
+                new LoanListingScreen(employee);
             }
         });
         buttonsPanel.add(loansButton);
@@ -65,7 +65,7 @@ public class EmployeeScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-                new AddBookScreen();
+                new AddBookScreen(employee);
             }
         }
         );

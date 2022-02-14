@@ -34,7 +34,9 @@ public class UserCreate implements ActionListener {
 
         Screen.setLibraryUsersList(model);
 
+
         screen.getFrame().setVisible(false);
+        WindowEvents.saveFile();
         new LoginScreen();
         
         screen.getFrame().repaint();

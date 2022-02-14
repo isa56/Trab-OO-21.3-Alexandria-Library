@@ -28,12 +28,12 @@ public class BookDelete implements ActionListener {
             try {
                 model.removeRow(selectedRow);
                 Screen.getBookList().remove(selectedRow);
-    
+                WindowEvents.saveFile();
+
                 this.screen.getFrame().repaint();
     
-            } catch (Exception excep) {
+            } catch (Exception excep) {}
 
-            }
         }
     }
 

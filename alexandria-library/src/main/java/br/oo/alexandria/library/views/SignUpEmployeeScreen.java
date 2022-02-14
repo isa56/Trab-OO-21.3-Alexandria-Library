@@ -1,6 +1,7 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.controllers.EmployeeCreate;
+import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -15,6 +16,7 @@ public class SignupEmployeeScreen extends Screen {
     private JPanel formPanel;
     private JPanel buttonsPanel;
 
+    private User user;
     private JTextField nameField;
     private JTextField emailField;
     private JTextField phoneField;
@@ -22,10 +24,11 @@ public class SignupEmployeeScreen extends Screen {
 
     private JButton signupButton;
 
-    public SignupEmployeeScreen() {
+    public SignupEmployeeScreen(User user) {
 
         super(Constants.LOGIN_LABEL);
-
+        
+        this.user = user;
         this.nameField = new JTextField(Constants.FIELD_SIZE);
         this.emailField = new JTextField(Constants.FIELD_SIZE);
         this.phoneField = new JTextField(Constants.FIELD_SIZE);
@@ -83,7 +86,7 @@ public class SignupEmployeeScreen extends Screen {
 
         buttonsPanel = new JPanel();
 
-        this.signupButton.addActionListener(new EmployeeCreate(this));
+        this.signupButton.addActionListener(new EmployeeCreate(this, user));
         buttonsPanel.add(signupButton);
 
         getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);

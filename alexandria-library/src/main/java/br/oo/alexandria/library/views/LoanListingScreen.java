@@ -58,13 +58,11 @@ public class LoanListingScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 getFrame().setVisible(false);
-
                 if (user instanceof Manager) {
                     new ManagerScreen((Manager) user);
                 } else if (user instanceof Employee) {
                     new EmployeeScreen((Employee) user);
                 }
-
             }
         });
 

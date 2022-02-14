@@ -1,9 +1,12 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -13,19 +16,24 @@ public class UsersLoansScreen extends Screen {
 
     private User user;
     private List<Loan> myLoansList;
+    private JPanel buttonsPanel;
     private JPanel listingPanel;
     private JTable listingTable;
     private DefaultTableModel loansTableModel;
+    private JButton backButton;
 
     private int lastIndex;
 
     public UsersLoansScreen(User user) {
         super(Constants.LOAN_LABEL);
-        
+
         this.user = user;
 
+        buttonsPanel = new JPanel();
+        backButton = new JButton(Constants.GOBACK_LABEL);
+
         myLoansList = findUserLoans();
-        
+
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
         listingTable = new JTable(loansTableModel);
 
@@ -34,20 +42,20 @@ public class UsersLoansScreen extends Screen {
     }
 
     private List<Loan> findUserLoans() {
-        
+
         List<Loan> myLoanList = new ArrayList<>();
         List<Loan> loanList = this.getLoansList();
-        
-        for(Loan loan : loanList) {
-            if(loan.getUser().equals(user)) {
+
+        for (Loan loan : loanList) {
+            if (loan.getUser().equals(user)) {
                 myLoanList.add(loan);
             }
         }
-        
+
         return myLoanList;
-        
+
     }
-    
+
     private void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
@@ -60,8 +68,20 @@ public class UsersLoansScreen extends Screen {
 
         this.listingPanel.add(new JScrollPane(listingTable));
 
-        getMainPanel().add(listingPanel);
+        getMainPanel().add(listingPanel, BorderLayout.CENTER);
 
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getFrame().setVisible(false);
+                new UserScreen((LibraryUser) user);
+            }
+        });
+
+        buttonsPanel.add(backButton, BorderLayout.WEST);
+
+        getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
+        
         getFrame().add(getMainPanel());
 
         getFrame().setVisible(true);

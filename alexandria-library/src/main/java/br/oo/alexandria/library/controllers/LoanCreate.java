@@ -38,7 +38,7 @@ public class LoanCreate implements ActionListener {
         loansList.add(loan);
 
         Screen.setLoansList(loansList);
-
+        WindowEvents.saveFile();
         screen.getFrame().setVisible(false);
         new BookListingScreen(user);
 
