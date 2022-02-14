@@ -31,7 +31,7 @@ public class EmployeeCreate implements ActionListener {
                 )
         );
 
-        screen.setEmployeeList(model);
+        Screen.setEmployeeList(model);
 
         screen.getFrame().repaint();
     }

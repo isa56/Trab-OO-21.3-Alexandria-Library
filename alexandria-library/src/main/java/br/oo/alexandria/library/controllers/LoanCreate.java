@@ -26,7 +26,7 @@ public class LoanCreate implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        List<Loan> loansList = screen.getLoansList();
+        List<Loan> loansList = Screen.getLoansList();
 
         Loan loan = new Loan(
                 user,
