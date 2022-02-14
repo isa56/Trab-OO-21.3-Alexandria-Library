@@ -9,18 +9,4 @@ public class Employee extends User {
         super(name, phone, email, password);
     }
 
-    public void lendBook(Book book, LibraryUser user) {
-        book.lendBook(user);
-        
-    }
-
-    // Por enquanto printa
-    public void findBookLenders(String bookName) {
-        Book book = Library.findBookByName(bookName);
-        List<LibraryUser> readerList = book.getReaderList();
-        readerList.forEach(reader -> {
-            System.out.println("Usuário: " + reader.getName() + "\nTelefone: " + reader.getPhone() + "\nE-Mail: " + reader.getEmail() + "\n");
-        });
-    }
-
 }

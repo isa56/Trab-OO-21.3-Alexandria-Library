@@ -3,6 +3,7 @@ package br.oo.alexandria.library.controllers;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
+import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
@@ -26,6 +27,7 @@ public class WindowEvents implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
 
+        
         // Ler arquivo de livros:
         try {
             String readBookFile = FileIO.readFile("data/bookdata");
@@ -41,6 +43,7 @@ public class WindowEvents implements WindowListener {
 
         } catch (FileNotFoundException ex) {
         }
+        
 
         // Ler arquivo de usuários da biblioteca:
         try {
@@ -58,6 +61,7 @@ public class WindowEvents implements WindowListener {
         } catch (FileNotFoundException ex) {
         }
         
+        
         // Ler arquivo de funcionários:
         try {
             String readEmployeeFile = FileIO.readFile("data/employeedata");
@@ -74,6 +78,7 @@ public class WindowEvents implements WindowListener {
         } catch (FileNotFoundException ex) {
         }
         
+        
         // Ler arquivo de administradores:
         try {
             String readManagerFile = FileIO.readFile("data/managerdata");
@@ -87,8 +92,23 @@ public class WindowEvents implements WindowListener {
 
             screen.getManagerList().setModel(managerModel);
 
-        } catch (FileNotFoundException ex) {
-        }
+        } catch (FileNotFoundException ex) {}
+
+        
+        // Ler arquivo de empréstimos:
+        try {
+            String readLoansFile = FileIO.readFile("data/loandata");
+            List<Loan> loanList = JSON.toLoans(readLoansFile);
+
+            DefaultListModel<Loan> loanModel = new DefaultListModel<>();
+
+            for (Loan loan : loanList) {
+                loanModel.addElement(loan);
+            }
+
+            screen.getLoansList().setModel(loanModel);
+
+        } catch (FileNotFoundException ex) {}
 
         screen.getFrame().repaint();
     }
@@ -96,6 +116,7 @@ public class WindowEvents implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
 
+        
         // Salvando a lista de livros:
         ListModel<Book> bookModel = screen.getBookList().getModel();
         List<Book> books = new ArrayList<>();
@@ -110,6 +131,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile("data/bookdata", booksToJSON);
 
+        
         // Salvando a lista de usuários:
         ListModel<LibraryUser> libUserModel = screen.getLibraryUsersList().getModel();
         List<LibraryUser> libUsers = new ArrayList<>();
@@ -124,6 +146,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile("data/userdata", libUserToJSON);
 
+        
         // Salvando a lista de funcionários:
         ListModel<Employee> employeeModel = screen.getEmployeeList().getModel();
         List<Employee> employees = new ArrayList<>();
@@ -138,6 +161,7 @@ public class WindowEvents implements WindowListener {
 
         FileIO.writeFile("data/employeedata", employeeToJSON);
 
+        
         // Salvando a lista de gerentes:
         ListModel<Manager> managerModel = screen.getManagerList().getModel();
         List<Manager> managers = new ArrayList<>();
@@ -151,6 +175,21 @@ public class WindowEvents implements WindowListener {
         System.out.println(managerToJSON);
 
         FileIO.writeFile("data/managerdata", managerToJSON);
+
+        
+        // Salvando a lista de empréstimos:
+        ListModel<Loan> loanModel = screen.getLoansList().getModel();
+        List<Loan> loans = new ArrayList<>();
+
+        for (int i = 0; i < loanModel.getSize(); i++) {
+            loans.add(loanModel.getElementAt(i));
+        }
+
+        String loanToJSON = JSON.toJSON(loans);
+
+        System.out.println(loanToJSON);
+
+        FileIO.writeFile("data/loandata", loanToJSON);
 
     }
 

@@ -21,7 +21,7 @@ public class LoanListingScreen extends Screen {
         super(Constants.LOAN_LABEL);
 
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
-        listingTable = new JTable();
+        listingTable = new JTable(loansTableModel);
 
         draw();
 

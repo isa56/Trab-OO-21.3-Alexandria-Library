@@ -4,6 +4,7 @@ import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
+import br.oo.alexandria.library.models.Loan;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ public abstract class Screen {
     private static JList<LibraryUser> libraryUsersList;
     private static JList<Employee> employeeList;
     private static JList<Manager> managerList;
+    private static JList<Loan> loansList;
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -55,6 +57,14 @@ public abstract class Screen {
         this.managerList = managerList;
     }
 
+    public static JList<Loan> getLoansList() {
+        return loansList;
+    }
+
+    public static void setLoansList(JList<Loan> loansList) {
+        Screen.loansList = loansList;
+    }
+
     public JFrame getFrame() {
         return frame;
     }
@@ -73,7 +83,7 @@ public abstract class Screen {
 
     public static void main(String[] args) {
         
-        LoginScreen screen = new LoginScreen();
+        BookListingScreen screen = new BookListingScreen();
 
     }
 
