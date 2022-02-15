@@ -1,1 +1,44 @@
-[{"name":"employee","phone":"00000000","email":"employee","password":"employee"},{"name":"funcionario","phone":"00000000","email":"funcionario","password":"funcionario"},{"name":"braquiossauro","phone":"00000000","email":"braquiossauro","password":"braquiossauro"},{"name":"isadora funcionario","phone":"00000000","email":"isadorafuncionario","password":"isadora"},{"name":"gabriel funcionario","phone":"00000000","email":"gabrielfuncionario","password":"gabriel"},{"name":"nelio funcionario","phone":"00000000","email":"neliofuncionario","password":"nelio"},{"name":"Anjo","phone":"900000000","email":"anjo@emaill.com","password":"anjo"}]
+[
+    {
+        "name": "employee",
+        "phone": "00000000",
+        "email": "employee",
+        "password": "employee"
+    },
+    {
+        "name": "funcionario",
+        "phone": "00000000",
+        "email": "funcionario",
+        "password": "funcionario"
+    },
+    {
+        "name": "braquiossauro",
+        "phone": "00000000",
+        "email": "braquiossauro",
+        "password": "braquiossauro"
+    },
+    {
+        "name": "isadora funcionario",
+        "phone": "00000000",
+        "email": "isadorafuncionario",
+        "password": "isadora"
+    },
+    {
+        "name": "gabriel funcionario",
+        "phone": "00000000",
+        "email": "gabrielfuncionario",
+        "password": "gabriel"
+    },
+    {
+        "name": "nelio funcionario",
+        "phone": "00000000",
+        "email": "neliofuncionario",
+        "password": "nelio"
+    },
+    {
+        "name": "Anjo",
+        "phone": "900000000",
+        "email": "anjo@emaill.com",
+        "password": "anjo"
+    }
+]

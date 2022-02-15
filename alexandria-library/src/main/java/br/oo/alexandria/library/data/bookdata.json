@@ -1,1 +1,74 @@
-[{"bookName":"livro","bookAuthor":"autor","editorName":"editora","releaseYear":123,"bookGenre":"ROMANCE","isAvailable":true},{"bookName":"Conectadas","bookAuthor":"Clara Alves","editorName":"Seguinte","releaseYear":2019,"bookGenre":"ROMANCE","isAvailable":true},{"bookName":"ggsdajhdskfjhj","bookAuthor":"sadfadsfads","editorName":"sdfafhjdsa","releaseYear":135456,"bookGenre":"ROMANCE","isAvailable":true}]
+[
+    {
+        "bookName": "livro",
+        "bookAuthor": "autor",
+        "editorName": "editora",
+        "releaseYear": 123,
+        "bookGenre": "ROMANCE",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Conectadas",
+        "bookAuthor": "Clara Alves",
+        "editorName": "Seguinte",
+        "releaseYear": 2019,
+        "bookGenre": "ROMANCE",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Guia do Mochileiro das Galáxias",
+        "bookAuthor": "Douglas Adams",
+        "editorName": "Arqueiro",
+        "releaseYear": 1979,
+        "bookGenre": "FICCAO_CIENTIFICA",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Código Limpo",
+        "bookAuthor": "Robert Cecil Martin",
+        "editorName": "Pearson",
+        "releaseYear": 2008,
+        "bookGenre": "AUTO_AJUDA",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Python Fluente",
+        "bookAuthor": "Luciano Ramalho",
+        "editorName": "O'Reilly",
+        "releaseYear": 2015,
+        "bookGenre": "AUTO_AJUDA",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Introdução a sistemas de bancos de dados",
+        "bookAuthor": "Cristopher J. Date",
+        "editorName": "LTC",
+        "releaseYear": 1975,
+        "bookGenre": "AUTO_AJUDA",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Manda Foto de Agora",
+        "bookAuthor": "Koda G.",
+        "editorName": "KDP",
+        "releaseYear": 2021,
+        "bookGenre": "ROMANCE",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Alice no País das Maravilhas",
+        "bookAuthor": "Lewis Carroll",
+        "editorName": "Clássico",
+        "releaseYear": 1983,
+        "bookGenre": "FANTASIA",
+        "isAvailable": true
+    },
+    {
+        "bookName": "Clichês em rosa, roxo e azul",
+        "bookAuthor": "Maria Freitas",
+        "editorName": "Se Liga",
+        "releaseYear": 2021,
+        "bookGenre": "ROMANCE",
+        "isAvailable": true
+    }
+]
