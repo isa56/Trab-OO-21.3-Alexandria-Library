@@ -60,8 +60,8 @@ public class BookDetailsScreen extends Screen {
 
         getMainPanel().setLayout(new BorderLayout());
 
-        infoPanel.setLayout(new GridLayout(0,1));
-        
+        infoPanel.setLayout(new GridLayout(0, 1));
+
         infoPanel.add(new JLabel(Constants.BOOK_LABEL + ": " + book.getBookName()));
 
         infoPanel.add(new JLabel(Constants.BOOK_AUTHOR_LABEL + ": " + book.getBookAuthor()));
@@ -93,7 +93,10 @@ public class BookDetailsScreen extends Screen {
         loanButton.addActionListener(new LoanCreate(this, book, user));
 
         buttonPanel.add(backButton, BorderLayout.EAST);
-        buttonPanel.add(loanButton, BorderLayout.WEST);
+
+        if (book.isIsAvailable()) {
+            buttonPanel.add(loanButton, BorderLayout.WEST);
+        }
 
         getMainPanel().add(infoPanel, BorderLayout.CENTER);
         getMainPanel().add(buttonPanel, BorderLayout.SOUTH);

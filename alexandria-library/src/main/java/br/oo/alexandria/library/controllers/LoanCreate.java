@@ -35,6 +35,8 @@ public class LoanCreate implements ActionListener {
                 false
         );
 
+        book.setIsAvailable(false);
+        
         loansList.add(loan);
 
         Screen.setLoansList(loansList);

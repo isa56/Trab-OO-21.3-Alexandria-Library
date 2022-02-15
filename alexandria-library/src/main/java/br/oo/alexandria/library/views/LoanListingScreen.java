@@ -8,6 +8,7 @@ import br.oo.alexandria.library.util.Constants;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ public class LoanListingScreen extends Screen {
     private JPanel buttonsPanel;
     private JButton backButton;
     private DefaultTableModel loansTableModel;
+    private List<Loan> allLoansList;
 
     private int lastIndex;
 
@@ -32,12 +34,22 @@ public class LoanListingScreen extends Screen {
 
         this.user = user;
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
+        allLoansList = Screen.getLoansList();
         
-        for (Loan loan : getLoansList()) {
-            Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName()};
+        for (Loan loan : allLoansList) {
+
+            String available;
+
+            if (loan.isLoanFinished()) {
+                available = Constants.NO_LABEL;
+            } else {
+                available = Constants.YES_LABEL;
+            }
+
+            Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName(), available};
             loansTableModel.addRow(tableRow);
         }
-        
+
         listingTable = new JTable(loansTableModel);
 
         buttonsPanel = new JPanel();
@@ -74,7 +86,7 @@ public class LoanListingScreen extends Screen {
         });
 
         buttonsPanel.add(backButton, BorderLayout.CENTER);
-        
+
         getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
 
         getFrame().add(getMainPanel());

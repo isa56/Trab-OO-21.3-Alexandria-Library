@@ -40,11 +40,12 @@ public abstract class Constants {
     public static final String SIGNUP_LABEL = "Cadastrar";
     public static final String GOBACK_LABEL = "Voltar";
     public static final String LOAN_LABEL = "Empréstimos";
-    public static final String ADD_BOOK_LABEL = "Cadatrar Livro";
+    public static final String ADD_BOOK_LABEL = "Cadastrar Livro";
     public static final String YES_LABEL = "Sim";
     public static final String NO_LABEL = "Não";
     public static final String RETURNING_LABEL = "Devolução";
     public static final String RETURN_LABEL = "Devolver";
+    public static final String BORROWED_LABEL = "Emprestado";
     public static final String DELETE_LABEL = "Deletar";
     public static final String ADD_MANAGER_LABEL = "Adicionar Gerente";
     public static final String ADD_EMPLOYEE_LABEL = "Adicionar Funcionário";
@@ -53,7 +54,7 @@ public abstract class Constants {
     // LISTING STRING ARRAYS:
     public static final String[] BOOKS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL};
     public static final String[] BOOKS_USER_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_AUTHOR_LABEL, Constants.BOOK_AVAILABILITY_LABEL};
-    public static final String[] LOANS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.BOOK_READER_LABEL};
+    public static final String[] LOANS_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.BOOK_READER_LABEL, Constants.BORROWED_LABEL};
     public static final String[] LOANS_USER_LISTING = {Constants.BOOK_LABEL, Constants.BOOK_LENTDATE_LABEL, Constants.RETURNING_LABEL};
 
     // DIMENSIONS:

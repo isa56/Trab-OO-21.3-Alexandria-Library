@@ -13,6 +13,7 @@ import br.oo.alexandria.library.views.Screen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class BookCreate implements ActionListener {
 
@@ -26,32 +27,38 @@ public class BookCreate implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
         Genre selectedGenre = (Genre) screen.getGenreBox().getSelectedItem();
-        
+
         List<Book> bookList = Screen.getBookList();
 
-        bookList.add(
-            new Book(
-                screen.getNameField().getText(),
-                screen.getAuthorField().getText(),
-                screen.getEditorField().getText(),
-                Integer.parseInt(screen.getReleaseYearField().getText()),
-                selectedGenre
-            )        
-        );
+        try {
 
-        Screen.setBookList(bookList);
+            bookList.add(
+                    new Book(
+                            screen.getNameField().getText(),
+                            screen.getAuthorField().getText(),
+                            screen.getEditorField().getText(),
+                            Integer.parseInt(screen.getReleaseYearField().getText()),
+                            selectedGenre
+                    )
+            );
+
+            Screen.setBookList(bookList);
+
+        } catch (NumberFormatException excep) {
+            JOptionPane.showMessageDialog(screen.getFrame(), "Digite um ano válido!");
+
+        }
 
         WindowEvents.saveFile();
         screen.getFrame().setVisible(false);
-        if(user instanceof Manager) {
+        if (user instanceof Manager) {
             new ManagerScreen((Manager) user);
         } else {
             new EmployeeScreen((Employee) user);
         }
-        
-        
+
         screen.getFrame().repaint();
     }
 

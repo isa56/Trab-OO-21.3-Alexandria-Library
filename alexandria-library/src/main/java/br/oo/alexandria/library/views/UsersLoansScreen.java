@@ -1,5 +1,6 @@
 package br.oo.alexandria.library.views;
 
+import br.oo.alexandria.library.controllers.BookReturn;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.User;
@@ -21,6 +22,7 @@ public class UsersLoansScreen extends Screen {
     private JTable listingTable;
     private DefaultTableModel loansTableModel;
     private JButton backButton;
+    private JButton returnButton;
 
     private int lastIndex;
 
@@ -31,14 +33,30 @@ public class UsersLoansScreen extends Screen {
 
         buttonsPanel = new JPanel();
         backButton = new JButton(Constants.GOBACK_LABEL);
+        returnButton = new JButton(Constants.RETURN_LABEL);
 
         myLoansList = findUserLoans();
 
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
 
         for (Loan loan : myLoansList) {
-            Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName()};
+            
+            String available;
+            
+            if(loan.isLoanFinished())
+                available = Constants.NO_LABEL;
+            else
+                available = Constants.YES_LABEL;
+            
+            Object[] tableRow = {
+                loan.getBook().getBookName(), 
+                loan.getLentDate(), 
+                loan.getUser().getName(), 
+                available
+            };
+            
             loansTableModel.addRow(tableRow);
+            
         }
 
         listingTable = new JTable(loansTableModel);
@@ -83,8 +101,11 @@ public class UsersLoansScreen extends Screen {
                 new UserScreen((LibraryUser) user);
             }
         });
+        
+        returnButton.addActionListener(new BookReturn(this));
 
         buttonsPanel.add(backButton, BorderLayout.WEST);
+        buttonsPanel.add(returnButton, BorderLayout.EAST);
 
         getMainPanel().add(buttonsPanel, BorderLayout.SOUTH);
         
@@ -127,6 +148,46 @@ public class UsersLoansScreen extends Screen {
 
     public void setLastIndex(int lastIndex) {
         this.lastIndex = lastIndex;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Loan> getMyLoansList() {
+        return myLoansList;
+    }
+
+    public void setMyLoansList(List<Loan> myLoansList) {
+        this.myLoansList = myLoansList;
+    }
+
+    public JPanel getButtonsPanel() {
+        return buttonsPanel;
+    }
+
+    public void setButtonsPanel(JPanel buttonsPanel) {
+        this.buttonsPanel = buttonsPanel;
+    }
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+
+    public void setBackButton(JButton backButton) {
+        this.backButton = backButton;
+    }
+
+    public JButton getReturnButton() {
+        return returnButton;
+    }
+
+    public void setReturnButton(JButton returnButton) {
+        this.returnButton = returnButton;
     }
 
 }
