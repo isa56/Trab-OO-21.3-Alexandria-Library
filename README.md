@@ -10,7 +10,7 @@
 
 ## Descrição
 Sistema de Biblioteca para o curso de Orientação a Objetos (DCC025) no período 2021.3 da UFJF.
-* Linguagem: <img alt="Java" src="* Linguagem: <img alt="Java" src="https://www.ativasoft.com.br/blog/wp-content/uploads/2018/01/java_icon.png" width="40"></img>
+* Linguagem: <img alt="Java" src="https://blog-geek-midia.s3.amazonaws.com/wp-content/uploads/2020/07/26213557/pngwing.com_.png" width="40"></img>
 
 ## Como Usar
 1. Faça um clone deste repositório: `git clone https://github.com/isa56/Trab-OO-21.3-Alexandria-Library`;
