@@ -23,7 +23,7 @@ O sistema foi implementado seguindo o padrão **MVC**, e possui cinco pacotes: `
 <br>
 A *Herança* é usada para todas as telas, que herdam de `Screen`, assim como para os usuários. Já o *polimorfismo* é usado no construtor dessas classes para diferenciar a maneira como são usadas.
 <br>
-A *Classe Abstrata* `Constants` é usada para definir constantes que são usadas por todo o projeto. Usamos também a *interface* 
+A *Classe Abstrata* `Constants` é usada para definir constantes que são usadas por todo o projeto. Usamos também a *interface* `Drawer`, que obriga todas as telas a definirem um método `draw`, o qual deve "desenhar" na tela todos os elementos.
 <br>
 Usamos muitas *listas* de objetos das `models` como `List e ArrayList` como *coleção*. Para *tratar exceções* de diversos tipos, como preenchimento de formulários e de *leitura e escrita dos arquivos* `.json` em `data`.
 <br>

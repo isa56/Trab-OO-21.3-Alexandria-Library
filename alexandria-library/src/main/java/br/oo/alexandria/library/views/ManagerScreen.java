@@ -32,7 +32,7 @@ public class ManagerScreen extends Screen {
         this.message = new JLabel(Constants.MESSAGE + manager.getName());
 
         this.booksButton = new JButton(Constants.BOOKS_LABEL);
-        this.loansButton = new JButton(Constants.MYLOAN_LABEL);
+        this.loansButton = new JButton(Constants.LOAN_LABEL);
         this.addBookButton = new JButton(Constants.ADD_BOOK_LABEL);
         this.addManagerButton = new JButton(Constants.ADD_MANAGER_LABEL);
         this.addEmployeeButton = new JButton(Constants.ADD_EMPLOYEE_LABEL);
@@ -41,7 +41,7 @@ public class ManagerScreen extends Screen {
 
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
         getMainPanel().setLayout(new BorderLayout());

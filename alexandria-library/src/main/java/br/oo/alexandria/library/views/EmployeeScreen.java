@@ -38,7 +38,7 @@ public class EmployeeScreen extends Screen {
 
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
         getMainPanel().setLayout(new BorderLayout());

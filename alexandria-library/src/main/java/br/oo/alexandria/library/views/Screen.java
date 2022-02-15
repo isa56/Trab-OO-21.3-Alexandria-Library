@@ -15,7 +15,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Screen {
+public class Screen implements Drawer {
 
     private static List<Book> bookList = new ArrayList<>();
     private static List<LibraryUser> libraryUsersList = new ArrayList<>();
@@ -90,27 +90,10 @@ public class Screen {
     }
 
     public static void main(String[] args) {
-        /*
-        BookDetailsScreen screen = new BookDetailsScreen(
-                new User(
-                        "Isadora",
-                        "988405138",
-                        "isadora@email.com",
-                        "isaisaisa"
-                ),
-                new Book(
-                        "Conectadas",
-                        "Clara Alves",
-                        "Não sei",
-                        2020,
-                        Genre.ROMANCE
-                )
-        );
-         */
-
-        managerList.add(new Manager("admin", "00000000", "admin", "admin"));
-
         LoginScreen screen = new LoginScreen();
     }
+
+    @Override
+    public void draw() {}
 
 }

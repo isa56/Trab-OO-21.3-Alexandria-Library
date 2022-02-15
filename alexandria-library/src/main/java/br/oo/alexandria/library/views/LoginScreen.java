@@ -26,7 +26,7 @@ public class LoginScreen extends Screen {  //  Não está aparecendo, por que?
         draw();
     }
 
-    private void draw() {
+    public void draw() {
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 
         getMainPanel().setLayout(new BorderLayout());

@@ -58,7 +58,7 @@ public class AddBookScreen extends Screen {
 
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 

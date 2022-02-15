@@ -54,7 +54,7 @@ public class BookListingScreen extends Screen {
         draw();
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 

@@ -1,6 +1,7 @@
 package br.oo.alexandria.library.views;
 
 import br.oo.alexandria.library.models.Employee;
+import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Manager;
 import br.oo.alexandria.library.models.User;
 import br.oo.alexandria.library.util.Constants;
@@ -31,6 +32,12 @@ public class LoanListingScreen extends Screen {
 
         this.user = user;
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
+        
+        for (Loan loan : getLoansList()) {
+            Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName()};
+            loansTableModel.addRow(tableRow);
+        }
+        
         listingTable = new JTable(loansTableModel);
 
         buttonsPanel = new JPanel();
@@ -40,7 +47,7 @@ public class LoanListingScreen extends Screen {
 
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 

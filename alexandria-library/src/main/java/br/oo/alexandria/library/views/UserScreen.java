@@ -40,7 +40,7 @@ public class UserScreen extends Screen {
         getFrame().repaint();
     }
 
-    private void draw() {
+    public void draw() {
 
         buttonsPanel = new JPanel();
 

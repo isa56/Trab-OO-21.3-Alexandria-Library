@@ -54,7 +54,7 @@ public class BookDetailsScreen extends Screen {
         this.lastIndex = lastIndex;
     }
 
-    private void draw() {
+    public void draw() {
 
         getFrame().setSize(Constants.WINDOW_DIMENSION);
 

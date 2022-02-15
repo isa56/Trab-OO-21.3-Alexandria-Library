@@ -1,6 +1,5 @@
 package br.oo.alexandria.library.controllers;
 
-import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.util.Constants;
 import br.oo.alexandria.library.util.FileIO;
 import br.oo.alexandria.library.util.JSON;
