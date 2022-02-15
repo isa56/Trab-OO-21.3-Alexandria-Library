@@ -35,6 +35,12 @@ public class UsersLoansScreen extends Screen {
         myLoansList = findUserLoans();
 
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
+
+        for (Loan loan : myLoansList) {
+            Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName()};
+            loansTableModel.addRow(tableRow);
+        }
+
         listingTable = new JTable(loansTableModel);
 
         draw();
@@ -44,10 +50,10 @@ public class UsersLoansScreen extends Screen {
     private List<Loan> findUserLoans() {
 
         List<Loan> myLoanList = new ArrayList<>();
-        List<Loan> loanList = this.getLoansList();
+        List<Loan> loanList = Screen.getLoansList();
 
         for (Loan loan : loanList) {
-            if (loan.getUser().equals(user)) {
+            if (loan.getUser().getEmail().equals(user.getEmail())) {
                 myLoanList.add(loan);
             }
         }
