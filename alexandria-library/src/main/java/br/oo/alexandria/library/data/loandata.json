@@ -1,1 +1,1 @@
-[]
+[{"user":{"name":"library user","phone":"00000000","email":"user","password":"user"},"book":{"bookName":"Cliches em rosa, roxo e azul","bookAuthor":"Maria Freitas","editorName":"Se Liga","releaseYear":2021,"bookGenre":"ROMANCE","isAvailable":false},"lentDate":"Feb 14, 2022 11:08:14 PM","loanFinished":true}]

@@ -25,7 +25,6 @@ public class LoanListingScreen extends Screen {
     private JPanel buttonsPanel;
     private JButton backButton;
     private DefaultTableModel loansTableModel;
-    private List<Loan> allLoansList;
 
     private int lastIndex;
 
@@ -34,9 +33,10 @@ public class LoanListingScreen extends Screen {
 
         this.user = user;
         loansTableModel = new DefaultTableModel(Constants.LOANS_LISTING, 0);
-        allLoansList = Screen.getLoansList();
-        
-        for (Loan loan : allLoansList) {
+
+        List<Loan> loanList = Screen.getLoansList();
+
+        for (Loan loan : loanList) {
 
             String available;
 
@@ -49,6 +49,8 @@ public class LoanListingScreen extends Screen {
             Object[] tableRow = {loan.getBook().getBookName(), loan.getLentDate(), loan.getUser().getName(), available};
             loansTableModel.addRow(tableRow);
         }
+
+        System.out.println(loansTableModel);
 
         listingTable = new JTable(loansTableModel);
 

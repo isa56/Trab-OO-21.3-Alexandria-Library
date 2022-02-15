@@ -4,10 +4,8 @@ import br.oo.alexandria.library.controllers.WindowEvents;
 import br.oo.alexandria.library.models.Loan;
 import br.oo.alexandria.library.models.Book;
 import br.oo.alexandria.library.models.Employee;
-import br.oo.alexandria.library.models.Genre;
 import br.oo.alexandria.library.models.LibraryUser;
 import br.oo.alexandria.library.models.Manager;
-import br.oo.alexandria.library.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
